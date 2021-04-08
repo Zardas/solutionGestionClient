@@ -1,0 +1,5 @@
+.vs
+gestionRelationClient.sln
+gestionRelationClient/bin
+gestionRelationClient/Migrations
+gestionRelationClient/obj
