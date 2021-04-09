@@ -1,0 +1,315 @@
+<Project>
+  <Name>CRM</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Untitled</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Utilisateur</Name>
+        <Access>Public</Access>
+        <Location left="43" top="416" />
+        <Size width="162" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">string login</Member>
+        <Member type="Field">string motdePasse</Member>
+        <Member type="Field">string loginStatus</Member>
+        <Member type="Method">public void verifierlogin()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Gestionnaire</Name>
+        <Access>Public</Access>
+        <Location left="43" top="733" />
+        <Size width="162" height="264" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string nomGestionnaire</Member>
+        <Member type="Field">string email</Member>
+        <Member type="Method">public void ajouterStock()</Member>
+        <Member type="Method">public void modifierStock()</Member>
+        <Member type="Method">public void supprimerStock()</Member>
+        <Member type="Method">public void ajouterArticle()</Member>
+        <Member type="Method">public void SupprimerArticle()</Member>
+        <Member type="Method">public void modifierArticle()</Member>
+        <Member type="Method">public void changerRole()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Client</Name>
+        <Access>Public</Access>
+        <Location left="43" top="74" />
+        <Size width="162" height="281" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string nom</Member>
+        <Member type="Field">string prenom</Member>
+        <Member type="Field">string mail</Member>
+        <Member type="Field">string telephone</Member>
+        <Member type="Field">int age</Member>
+        <Member type="Method">public void seConnecter()</Member>
+        <Member type="Method">public void inscrire()</Member>
+        <Member type="Method">public void recherche()</Member>
+        <Member type="Method">public void modifierProfil()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Role</Name>
+        <Access>Public</Access>
+        <Location left="43" top="1047" />
+        <Size width="162" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">string titre</Member>
+        <Member type="Method">public void ajouterRole()</Member>
+        <Member type="Method">public void modifierRole()</Member>
+        <Member type="Method">public void supprimerRole()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Compte</Name>
+        <Access>Public</Access>
+        <Location left="303" top="331" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">date dateCreation</Member>
+        <Member type="Method">public Facture[] getAllfacture()</Member>
+        <Member type="Method">public Facture[] getfactureParPeriode()</Member>
+        <Member type="Method">public void ajouterCompte()</Member>
+        <Member type="Method">public void supprimerCompte()</Member>
+        <Member type="Method">public void modifierInfoCompte()</Member>
+        <Member type="Method">public Article[] getArticlesPanier()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Abonnement</Name>
+        <Access>Public</Access>
+        <Location left="775" top="20" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int dureeAbonnement</Member>
+        <Member type="Method">public void getAbonnement()</Member>
+        <Member type="Method">public void modifierAbonnement()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Produit</Name>
+        <Access>Public</Access>
+        <Location left="904" top="635" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string fabricant</Member>
+        <Member type="Field">int quantite</Member>
+        <Member type="Field">int capacite</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Article</Name>
+        <Access>Public</Access>
+        <Location left="633" top="480" />
+        <Size width="162" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">string nom</Member>
+        <Member type="Field">string description</Member>
+        <Member type="Field">int prix</Member>
+        <Member type="Field">string image</Member>
+        <Member type="Field">string type</Member>
+        <Member type="Field">string manuel</Member>
+        <Member type="Method">public void afficherArticle()</Member>
+        <Member type="Method">public void getArticleDetails()</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Stock</Name>
+        <Access>Public</Access>
+        <Location left="660" top="860" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">string titre</Member>
+        <Member type="Method">public Article getStockArticle()</Member>
+        <Member type="Method">public Article[] getAllStockArticle()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Panier</Name>
+        <Access>Public</Access>
+        <Location left="532" top="31" />
+        <Size width="162" height="192" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">int quantiteProduit</Member>
+        <Member type="Method">public Article[] getAllArticles()</Member>
+        <Member type="Method">public void supprimerPanierArticle()</Member>
+        <Member type="Method">public void ajouterPanier()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Facture</Name>
+        <Access>Public</Access>
+        <Location left="303" top="74" />
+        <Size width="162" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">date dateEmission</Member>
+        <Member type="Field">int montant</Member>
+        <Member type="Method">public void calculerMontant()</Member>
+        <Member type="Method">public void ajouterFacture()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Support</Name>
+        <Access>Public</Access>
+        <Location left="280" top="617" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">int id</Member>
+        <Member type="Field">date dateCreation</Member>
+        <Member type="Field">string status</Member>
+        <Member type="Field">string objet</Member>
+        <Member type="Field">string description</Member>
+        <Member type="Field">string resolution</Member>
+        <Member type="Method">public void ajouterSupport()</Member>
+        <Member type="Method">public void modifierSupport()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Service</Name>
+        <Access>Public</Access>
+        <Location left="881" top="319" />
+        <Size width="162" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">string condition</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="1" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="2" second="4">
+        <Label>posseder</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>230</X>
+          <Y>96</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Generalization" first="6" second="7">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>962</X>
+          <Y>604</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="8">
+        <Label>gerer</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartRole>Responsable stock</StartRole>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="4" second="10">
+        <Label>concerner</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="9" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>615</X>
+          <Y>250</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="4" second="11">
+        <Label>beneficier</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1</StartMultiplicity>
+        <EndMultiplicity>0..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="1" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="7">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>859</X>
+          <Y>493</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>829</X>
+          <Y>493</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="7" second="5">
+        <Label>necessiter</Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>750</X>
+          <Y>431</Y>
+        </BendPoint>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>0..1</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="11" second="7">
+        <Label>concerner</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>0..*</StartMultiplicity>
+        <EndMultiplicity>1..*</EndMultiplicity>
+      </Relationship>
+      <Relationship type="Association" first="6" second="8">
+        <Label>contenir</Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Bidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+        <StartMultiplicity>1..*</StartMultiplicity>
+        <EndMultiplicity>1</EndMultiplicity>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>
