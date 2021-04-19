@@ -6,5 +6,13 @@ namespace gestionRelationClient.Models
 {
     class Role
     {
+        public int RoleId { get; set; }
+        public String Title { get; set; }
+
+        // TODO
+        public void ModifierRole()
+        {
+
+        }
     }
 }
