@@ -267,7 +267,7 @@ namespace gestionRelationClient.ViewModels
             {
                 Id = this.Clients.Count(),
                 Login = _addedClient.Login,
-                LoginStatus = "online",
+                LoginStatus = "initial",
                 Nom = _addedClient.Nom,
                 Prenom = _addedClient.Prenom,
                 Mail = _addedClient.Mail,
@@ -290,8 +290,6 @@ namespace gestionRelationClient.ViewModels
                 Telephone = _addedClient.Telephone,
                 Age = _addedClient.Age
             });*/
-
-            // On met le loginStatus initial à "online" puisque l'inscription fait automatiquement se connecter l'utilisateur
         }
 
 
@@ -330,6 +328,11 @@ namespace gestionRelationClient.ViewModels
 
         private void OpenListeCompteClient(Models.Utilisateur client)
         {
+            // On change le status Login de l'Utilisateur
+            client.Connexion();
+            DBContext.SaveChanges();
+
+
             Views.ListeCompteClient listeCompteClient = new Views.ListeCompteClient(client);
             listeCompteClient.Show();
             _window.Close();

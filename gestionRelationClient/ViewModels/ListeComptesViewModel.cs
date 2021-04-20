@@ -24,6 +24,18 @@ namespace gestionRelationClient.ViewModels
 
         public ObservableCollection<Models.Compte> Comptes { get; set; }
 
+        private Models.Compte p_SelectedItem;
+        public Models.Compte SelectedItem
+        {
+            get { return p_SelectedItem; }
+
+            set
+            {
+                p_SelectedItem = value;
+                //base.FirePropertyChangedEvent("SelectedItem");
+            }
+        }
+
 
         private Models.Compte _addedCompte;
         private bool _isValid_addedCompte;
@@ -46,7 +58,6 @@ namespace gestionRelationClient.ViewModels
 
 
             // Initialisation du compte
-            // Comment mettre le résultats d'un Where dans une obervableCollection
             ObservableCollection<Models.Compte> comptesATrouver = Models.Utilitaire.ToObservableCollection<Models.Compte>(DBContext.Comptes.Where(c => c.ClientId.Equals(Client.Id)));
 
             if (comptesATrouver == null)
@@ -67,19 +78,39 @@ namespace gestionRelationClient.ViewModels
                 o => _isValid_addedCompte,
                 o => AddCompte()
             );
+
+            // Sélection compte
+            SelectionnerCompteCommand = new RelayCommand(
+                o => (p_SelectedItem != null),
+                o => SelectionnerCompte()
+            );
+
+            // Navigation
+            GoToAccueilCommand = new RelayCommand(
+                o => true,
+                o => OpenAccueil()
+            );
+            GoToModificationClientCommand = new RelayCommand(
+                o => true,
+                o => OpenModificationClient()
+            );
+            GoToListeCompteClientCommand = new RelayCommand(
+                o => true,
+                o => OpenListeCompteClient(this.Client)
+            );
         }
 
 
 
         /* definition of the commands */
         public ICommand AjoutCompteCommand { get; private set; }
+        public ICommand SelectionnerCompteCommand { get; private set; }
+        public ICommand GoToAccueilCommand { get; private set; }
+        public ICommand GoToModificationClientCommand { get; private set; }
+        public ICommand GoToListeCompteClientCommand { get; private set; }
 
 
-
-        private void InitializeComptes()
-        {
-            
-        }
+        
 
 
 
@@ -125,6 +156,8 @@ namespace gestionRelationClient.ViewModels
                     NomCompte = this._addedCompte.NomCompte
                 });
 
+                // On ne peut pas ajouter le Compte au Client dans le modèle vu qu'on se balade avec un Utilisateur et pas un client à cause de ce satané Table per Type
+
                 DBContext.Comptes.Add(new Models.Compte()
                 {
                     ClientId = this.Client.Id,
@@ -139,8 +172,43 @@ namespace gestionRelationClient.ViewModels
             
                 
         }
-                
 
+
+
+        // Sélection du compte
+        public void SelectionnerCompte()
+        {
+            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(Client, p_SelectedItem);
+            pageCompteClient.Show();
+            _window.Close();
+        }
+
+
+
+
+
+
+        /* Navigation */
+        public void OpenAccueil()
+        {
+            this.Client.Deconnexion();
+            DBContext.SaveChanges();
+
+            Views.Accueil accueil = new Views.Accueil();
+            accueil.Show();
+            _window.Close();
+        }
+        //TODO
+        public void OpenModificationClient()
+        {
+
+        }
+        private void OpenListeCompteClient(Models.Utilisateur client)
+        {
+            Views.ListeCompteClient listeCompteClient = new Views.ListeCompteClient(client);
+            listeCompteClient.Show();
+            _window.Close();
+        }
 
 
 

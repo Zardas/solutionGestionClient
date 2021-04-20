@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Client - Inscription" Height="450" Width="800">
+        Title="Client - Inscription" Height="450" Width="800" SizeToContent="Height">
     <Grid>
         <!-- Titre -->
         <TextBlock HorizontalAlignment="Center" Margin="10,31,10,0" TextWrapping="Wrap" Text="Gestion Client" VerticalAlignment="Top" Height="40" Width="772" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Center" Foreground="#FFEA601F" FontWeight="Bold"/>

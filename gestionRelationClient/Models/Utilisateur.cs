@@ -16,5 +16,13 @@ namespace gestionRelationClient.Models
         public String LoginStatus { get; set; }
 
 
+        public void Connexion()
+        {
+            this.LoginStatus = "online";
+        }
+        public void Deconnexion()
+        {
+            this.LoginStatus = "offline";
+        }
     }
 }

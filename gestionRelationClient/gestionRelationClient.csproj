@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\ressources\img\deconnexion.png" />
+    <None Remove="Views\ressources\img\home.png" />
+    <None Remove="Views\ressources\img\option.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +22,18 @@
 
   <ItemGroup>
     <Folder Include="Ressources\Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Views\ressources\img\deconnexion.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\ressources\img\home.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Views\ressources\img\option.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

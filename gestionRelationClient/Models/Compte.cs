@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    class Compte
+    public class Compte
     {
         public int CompteId { get; set; }
         public DateTime DateCreation { get; set; }
@@ -12,16 +12,16 @@ namespace gestionRelationClient.Models
 
         // Un compte est lié à un seul client
         public int ClientId { get; set; }
-        public Client Client { get; set; }
+        private Client Client { get; set; }
 
         // Un compte possède plusieurs factures
-        public ICollection<Facture> Factures { get; set; }
+        private ICollection<Facture> Factures { get; set; }
 
         // Un compte peut bénéfier de plusieurs supports
-        public ICollection<Support> Supports;
+        private ICollection<Support> Supports;
 
         // Un compte possède un panier -> relation de composition : le panier ne peut pas vivre dans le compte
-        public Panier Panier { get; set; }
+        private Panier Panier { get; set; }
 
 
         public Compte()
@@ -32,13 +32,9 @@ namespace gestionRelationClient.Models
             this.Panier = new Panier(this);
         }
 
-        public ICollection<Facture> GetAllFacture()
-        {
-            return this.Factures;
-        }
 
         // TODO
-        public ICollection<Facture> GetFactureParPeriode()
+        private ICollection<Facture> GetFactureParPeriode()
         {
             return null;
         }
@@ -49,7 +45,7 @@ namespace gestionRelationClient.Models
 
         }
 
-        public ICollection<Article> GetArticlesPanier()
+        private ICollection<Article> GetArticlesPanier()
         {
             return this.Panier.GetAllArticles();
         }
@@ -65,5 +61,6 @@ namespace gestionRelationClient.Models
         {
 
         }
+
     }
 }
