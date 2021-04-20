@@ -21,7 +21,7 @@ namespace gestionRelationClient.Models
         private ICollection<Support> Supports;
 
         // Un compte possède un panier -> relation de composition : le panier ne peut pas vivre dans le compte
-        private Panier Panier { get; set; }
+        public Panier Panier { get; set; }
 
 
         public Compte()

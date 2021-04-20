@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    class Abonnement
+    public class Abonnement
     {
 
         // Relation 1..* vers Article ?

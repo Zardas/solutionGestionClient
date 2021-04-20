@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    class Support
+    public class Support
     {
         public int SupportId { get; set; }
         public DateTime DateCreation { get; set; }

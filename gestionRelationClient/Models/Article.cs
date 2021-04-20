@@ -5,7 +5,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    abstract class Article
+    public abstract class Article
     {
 
         //[DatabaseGenerated(DatabaseGeneratedOption.None)]

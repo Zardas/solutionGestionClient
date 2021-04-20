@@ -63,12 +63,12 @@ namespace gestionRelationClient.DatabaseContext
 
             
             modelBuilder.Entity<Models.Produit>().HasData(
-                new Models.Produit() { Id = 1, Description = "Logiciel caisse simple", Nom="Caisse_basic", Capacite=3, Prix=60, AbonnementId=1, StockId=1},
-                new Models.Produit() { Id = 2, Description = "Logiciel cassie medium", Nom="Caisse_medium", Capacite=3, Prix=100, AbonnementId=1, StockId=1}
+                new Models.Produit() { Id = 1, Description = "Logiciel caisse simple", Nom="Caisse_basic", Capacite=3, Prix=60, AbonnementId=1, StockId=1, Image= "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.n7ZXtT3TirdU3dZa-WYGDwAAAA%26pid%3DApi&f=1" },
+                new Models.Produit() { Id = 2, Description = "Logiciel cassie medium", Nom="Caisse_medium", Capacite=3, Prix=100, AbonnementId=1, StockId=1, Image= "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.n7ZXtT3TirdU3dZa-WYGDwAAAA%26pid%3DApi&f=1" }
             );
 
             modelBuilder.Entity<Models.Service>().HasData(
-                new Models.Service() { Id = 3, Description = "Service de WiFi simple", Nom = "Wifi_simple", Prix = 20, AbonnementId=1}
+                new Models.Service() { Id = 3, Description = "Service de WiFi simple", Nom = "Wifi_simple", Prix = 20, AbonnementId=1, Image= "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.idownloadblog.com%2Fwp-content%2Fuploads%2F2016%2F02%2Fwifi-icon.png&f=1&nofb=1"}
             );
 
         }

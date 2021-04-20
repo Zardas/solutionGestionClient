@@ -148,25 +148,35 @@ namespace gestionRelationClient.ViewModels
                 MessageBox.Show("Le compte existe déjà", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             } else
             {
-
-                this.Comptes.Add(new Models.Compte() {
-                    CompteId = Comptes.Count,
+                int nbComptes = DBContext.Comptes.Count();
+                Models.Compte compteToAdd = new Models.Compte()
+                {
+                    //CompteId = nbComptes+2, // Oon doit trouver tout les comptes pour affecter le bon id au niveau du modèle (+2 parce qu'il ne faut incrémenter (+1) et que ça ne commence pas à 0 (+1)
                     ClientId = this.Client.Id,
                     DateCreation = System.DateTime.Now,
                     NomCompte = this._addedCompte.NomCompte
-                });
+                };
+
+                MessageBox.Show("CompteId à affecter :" + (nbComptes + 2));
+                DBContext.Add(compteToAdd);
+                DBContext.SaveChanges();
+
+                compteToAdd.CompteId = nbComptes + 2;
+                this.Comptes.Add(compteToAdd);
+
+
 
                 // On ne peut pas ajouter le Compte au Client dans le modèle vu qu'on se balade avec un Utilisateur et pas un client à cause de ce satané Table per Type
 
-                DBContext.Comptes.Add(new Models.Compte()
+                /*DBContext.Comptes.Add(new Models.Compte()
                 {
                     ClientId = this.Client.Id,
                     DateCreation = System.DateTime.Now,
                     NomCompte = this._addedCompte.NomCompte
                 });
-                DBContext.SaveChanges();
+                DBContext.SaveChanges();*/
 
-                MessageBox.Show("Le compte " + _addedCompte.NomCompte + " a été ajouté");
+                //MessageBox.Show("Le compte " + _addedCompte.NomCompte + " a été ajouté");
             }
 
             

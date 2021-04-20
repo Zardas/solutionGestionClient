@@ -4,7 +4,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    class Panier
+    public class Panier
     {
 
         public int PanierId { get; set; }
@@ -39,6 +39,16 @@ namespace gestionRelationClient.Models
         public void SupprimerPanierArticle()
         {
 
+        }
+
+        public void getPrixTotal()
+        {
+            int prixTotal = 0;
+
+            foreach(Article article in this.Articles)
+            {
+                prixTotal += article.Prix;
+            }
         }
 
     }
