@@ -1,0 +1,61 @@
+﻿<Window x:Class="gestionRelationClient.Views.Achat_DetailsArticle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:gestionRelationClient.Views"
+        mc:Ignorable="d"
+        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="135*"/>
+                <RowDefinition Height="22*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Deconnexion" Command="{Binding GoToAccueilCommand}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem.Icon>
+                        <Image Source="ressources/img/deconnexion.png" HorizontalAlignment="Stretch" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Retour en arrière et panier-->
+            <Grid Margin="0,27,0,0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="&lt; Retour" Command="{Binding GoToListeArticles}" Grid.Column="0" Margin="5,18,294,17" Foreground="#FFEA601F" BorderBrush="{x:Null}" Height="28" Background="{x:Null}" Cursor="Hand" FontSize="14" />
+                <Button Content="Panier >" Command="{Binding AjoutCompteCommand}" Grid.Column="1" Margin="289,18,10,17" Foreground="#FFEA601F" BorderBrush="{x:Null}" Height="28" Background="{x:Null}" Cursor="Hand" FontSize="14" />
+            </Grid>
+
+
+
+
+            <!-- Liste des articles-->
+            <TextBlock Grid.Row="2" Text="{Binding NomArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Height="34" Width="612" Margin="27,0,0,0" />
+
+
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
+    </Grid>
+</Window>

@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace gestionRelationClient.ViewModels
 {
-    class AchatArticleViewModel
+    class AchatArticleDetailViewModel
     {
 
         /* reference to the current window */
@@ -16,36 +16,24 @@ namespace gestionRelationClient.ViewModels
 
         DatabaseContext.GestionRelationClient_DBContext DBContext;
 
-        private Models.Compte Compte;
+        private int IdCompte;
+
+        private Models.Article Article;
+        public string NomArticle { get; set; }
 
 
-        // Liste des articles à afficher (pas ceux que l'utilisateur possède déjà)
-        public ObservableCollection<Models.Article> Articles { get; set; }
-
-        private Models.Article p_SelectedItem;
-        public Models.Article SelectedItem
-        {
-            get { return p_SelectedItem; }
-
-            set
-            {
-                p_SelectedItem = value;
-            }
-        }
-
-
-
-
-        public AchatArticleViewModel(Window window, int idCompte)
+        public AchatArticleDetailViewModel(Window window, int idCompte, int idArticle)
         {
             this._window = window;
             DBContext = new DatabaseContext.GestionRelationClient_DBContext();
 
-            this.Compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(idCompte))).FirstOrDefault();
+            
 
-            // Pour l'instant, on ne s'embète pas à ne pas afficher les article qu'à déjà l'utilisateur
-            this.Articles = Models.Utilitaire.ToObservableCollection(DBContext.Articles);
+            this.IdCompte = idCompte;
+            this.Article = DBContext.Articles.Where(a => (a.Id.Equals(idArticle))).FirstOrDefault();
 
+            this.NomArticle = this.Article.Nom;
+            MessageBox.Show("Nom article : " + this.NomArticle);
 
 
 
@@ -64,13 +52,13 @@ namespace gestionRelationClient.ViewModels
                 o => true,
                 o => OpenPageClient()
             );
-            GoToListeComptesClient = new RelayCommand(
+            GoToListeCompteClientCommand = new RelayCommand(
                 o => true,
                 o => OpenListeCompteClient()
             );
-            SelectionnerCompteCommand = new RelayCommand(
+            GoToListeArticles = new RelayCommand(
                 o => true,
-                o => OpenDetailsArticle()
+                o => OpenListeArticles()
             );
         }
 
@@ -80,11 +68,8 @@ namespace gestionRelationClient.ViewModels
         public ICommand GoToAccueilCommand { get; private set; }
         public ICommand GoToModificationCompteCommand { get; private set; }
         public ICommand GoToPageCompteCommand { get; private set; }
-        public ICommand GoToListeComptesClient { get; private set; }
-        public ICommand SelectionnerCompteCommand { get; private set; }
-
-
-
+        public ICommand GoToListeCompteClientCommand { get; private set; }
+        public ICommand GoToListeArticles { get; private set; }
 
 
 
@@ -93,7 +78,9 @@ namespace gestionRelationClient.ViewModels
         /* Navigation */
         private void OpenAccueil()
         {
-            Models.Utilisateur client = DBContext.Utilisateurs.Where(c => (c.Id.Equals(this.Compte.ClientId))).FirstOrDefault();
+            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Models.Utilisateur client = DBContext.Utilisateurs.Where(c => (c.Id.Equals(compte.ClientId))).FirstOrDefault();
+
             client.Deconnexion();
             DBContext.SaveChanges();
 
@@ -103,28 +90,31 @@ namespace gestionRelationClient.ViewModels
         }
         private void OpenModificationCompte()
         {
-            Views.ModificationCompte modificationCompte = new Views.ModificationCompte(Compte.CompteId);
+            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Views.ModificationCompte modificationCompte = new Views.ModificationCompte(compte.CompteId);
             modificationCompte.Show();
             _window.Close();
         }
         private void OpenListeCompteClient()
         {
-            Models.Utilisateur client = DBContext.Utilisateurs.Where(c => (c.Id.Equals(this.Compte.ClientId))).FirstOrDefault();
+            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Models.Utilisateur client = DBContext.Utilisateurs.Where(c => (c.Id.Equals(compte.ClientId))).FirstOrDefault();
             Views.ListeCompteClient listeCompteClient = new Views.ListeCompteClient(client);
             listeCompteClient.Show();
             _window.Close();
         }
         private void OpenPageClient()
         {
-            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(Compte.CompteId);
+            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(compte.CompteId);
             pageCompteClient.Show();
             _window.Close();
         }
-        private void OpenDetailsArticle()
+        private void OpenListeArticles()
         {
-            MessageBox.Show("ou");
-            Views.Achat_DetailsArticle achat_DetailsArticle = new Views.Achat_DetailsArticle(Compte.CompteId, p_SelectedItem.Id);
-            achat_DetailsArticle.Show();
+            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Views.Achat_ListeArticle achat_ListeArticle = new Views.Achat_ListeArticle(compte.CompteId);
+            achat_ListeArticle.Show();
             _window.Close();
         }
     }

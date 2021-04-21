@@ -11,8 +11,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="19*"/>
                 <RowDefinition Height="39*"/>
-                <RowDefinition Height="135*"/>
-                <RowDefinition Height="22*"/>
+                <RowDefinition Height="128*"/>
+                <RowDefinition Height="29*"/>
             </Grid.RowDefinitions>
 
             <!-- Menu de navigation -->
@@ -68,12 +68,12 @@
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Text="{Binding Path=Nom}" FontSize="14" Margin="17,0,0,0" />
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Text="{Binding Path=Prix}" FontSize="14" TextAlignment="Right" />
                                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" Text="$" FontSize="14" TextAlignment="Left" />
-                                <Button Grid.Column="3" Content="Détails" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Height="20" Padding="20,0,20,0" />
                             </Grid>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <Button Grid.Row="3" Content="Détails" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Height="28" Width="730" Margin="10,1,0,0" BorderThickness="3,3,3,3" FontWeight="Bold" FontSize="14" />
 
 
 
