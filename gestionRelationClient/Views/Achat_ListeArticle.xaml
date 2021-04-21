@@ -9,10 +9,10 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="27*"/>
-                <RowDefinition Height="82*"/>
-                <RowDefinition Height="189*"/>
-                <RowDefinition Height="132*"/>
+                <RowDefinition Height="19*"/>
+                <RowDefinition Height="39*"/>
+                <RowDefinition Height="135*"/>
+                <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
 
             <!-- Menu de navigation -->
@@ -54,47 +54,27 @@
 
 
             <!-- Liste des articles-->
-            <ListBox Grid.Row="2" x:Name="ListBoxArticles" ItemsSource="{Binding Articles, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="#FFE6E8E4" BorderBrush="#FF3A3A3A" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="10,1,50,10">
+            <ListBox Grid.Row="2" x:Name="ListBoxArticles" ItemsSource="{Binding Articles, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="#FFE6E8E4" BorderBrush="#FF3A3A3A" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="10,1,60,10">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <Grid>
+                            <Grid Width="650">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="88*"/>
-                                    <ColumnDefinition Width="380*"/>
-                                    <ColumnDefinition Width="143*"/>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="160*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="{Binding Path=Image}" Stretch="Uniform"/>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding Path=Nom}" FontSize="14" Margin="17,0,0,0" />
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Text="{Binding Path=Prix}" FontSize="14" TextAlignment="Right" />
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="3" Text="$" FontSize="14" TextAlignment="Left" />
-                                <Button Grid.Column="4" Content="Détails" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Width="116" Height="20" />
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="0" Text="{Binding Path=Nom}" FontSize="14" Margin="17,0,0,0" />
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="1" Text="{Binding Path=Prix}" FontSize="14" TextAlignment="Right" />
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="2" Text="$" FontSize="14" TextAlignment="Left" />
+                                <Button Grid.Column="3" Content="Détails" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Height="20" Padding="20,0,20,0" />
                             </Grid>
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Grid Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="88*"/>
-                    <ColumnDefinition Width="380*"/>
-                    <ColumnDefinition Width="143*"/>
-                    <ColumnDefinition Width="30*"/>
-                    <ColumnDefinition Width="160*"/>
-                </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" Source="ressources/img/home.png" Stretch="Uniform"/>
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="1" Text="Titre de l'article" FontSize="14" Margin="17,0,0,0" />
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Grid.Column="2" Text="30" FontSize="14" TextAlignment="Right" />
-                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Grid.Column="3" Text="$" FontSize="14" TextAlignment="Left" />
-                <Button Grid.Column="4" Content="Détails" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Width="116" Height="20" />
-            </Grid>
-
-
-            <!-- <Button Content="Sélectionner" Grid.Column="1" Command="{Binding SelectionnerCompteCommand}" CommandParameter="{Binding ElementName=ListBox, Path=SelectedItems}"/>-->
-            <Button Grid.Row="3" Content="Sélectionner ce compte" HorizontalAlignment="Left" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Margin="12,198,0,-70" Width="512" />
 
 
 

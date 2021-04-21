@@ -59,10 +59,10 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Content="Mes articles" Command="{Binding ModificationNomCompteCommand}" Foreground="#393254" FontFamily="Euphemia" FontSize="24" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold"/>
-                <Button Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Content="Nouveaux achats" Command="{Binding GoToListArticleCommand}" Foreground="#FF394B54" FontFamily="Euphemia" FontSize="24" Background="#3bbc5f" BorderBrush="{x:Null}" FontWeight="Bold"/>
-                <Button Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" Content="Mes factures" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF39326E" FontFamily="Euphemia" FontSize="24" Background="#3fb5db" BorderBrush="{x:Null}" FontWeight="Bold"/>
-                <Button Grid.Column="1" Grid.Row="1" Margin="20,20,20,20" Content="Mes tickets" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF912B2B" FontFamily="Euphemia" FontSize="24" Background="#e05248" BorderBrush="{x:Null}" FontWeight="Bold"/>
+                <Button Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Content="Mes articles" Command="{Binding ModificationNomCompteCommand}" Foreground="#393254" FontFamily="Euphemia" FontSize="24" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Content="Nouveaux achats" Command="{Binding GoToListArticleCommand}" Foreground="#FF394B54" FontFamily="Euphemia" FontSize="24" Background="#3bbc5f" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" Content="Mes factures" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF39326E" FontFamily="Euphemia" FontSize="24" Background="#3fb5db" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="1" Grid.Row="1" Margin="20,20,20,20" Content="Mes tickets" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF912B2B" FontFamily="Euphemia" FontSize="24" Background="#e05248" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
 
             </Grid>
 

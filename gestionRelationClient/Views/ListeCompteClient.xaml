@@ -43,14 +43,14 @@
 
             <!-- Titre -->
             <Grid Margin="0,21,0,0" Grid.RowSpan="2">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Padding="75,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="53*"/>
+                    <ColumnDefinition Width="147*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Margin="27,0,0,0" Height="41" Width="173">
                 Bienvenue
                 </TextBlock>
-                <TextBlock Grid.Row="1" Text="{Binding nomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Padding="75,0,0,0" />
+                <TextBlock Grid.Column="1" Text="{Binding nomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Height="41" Width="481" />
 
             </Grid>
 
