@@ -157,7 +157,7 @@ namespace gestionRelationClient.ViewModels
                     NomCompte = this._addedCompte.NomCompte
                 };
 
-                MessageBox.Show("CompteId à affecter :" + (nbComptes + 2));
+                //MessageBox.Show("CompteId à affecter :" + (nbComptes + 2));
                 DBContext.Add(compteToAdd);
                 DBContext.SaveChanges();
 
@@ -188,7 +188,7 @@ namespace gestionRelationClient.ViewModels
         // Sélection du compte
         public void SelectionnerCompte()
         {
-            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(Client, p_SelectedItem);
+            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(p_SelectedItem.CompteId);
             pageCompteClient.Show();
             _window.Close();
         }

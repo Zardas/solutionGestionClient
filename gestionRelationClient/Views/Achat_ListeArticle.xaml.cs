@@ -13,14 +13,14 @@ using System.Windows.Shapes;
 namespace gestionRelationClient.Views
 {
     /// <summary>
-    /// Logique d'interaction pour PageCompteClient.xaml
+    /// Logique d'interaction pour Achat_ListeArticle.xaml
     /// </summary>
-    public partial class PageCompteClient : Window
+    public partial class Achat_ListeArticle : Window
     {
-        public PageCompteClient(int compteId)
+        public Achat_ListeArticle(int compteId)
         {
             InitializeComponent();
-            DataContext = new ViewModels.PageCompteClientViewModel(this, compteId);
+            DataContext = new ViewModels.AchatArticleViewModel(this, compteId);
         }
     }
 }

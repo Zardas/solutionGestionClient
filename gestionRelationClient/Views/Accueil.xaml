@@ -5,24 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
-    <Grid Background="#FFEEEAEA">
-        <!-- Titre -->
-        <TextBlock HorizontalAlignment="Center" Margin="10,31,10,0" TextWrapping="Wrap" Text="Gestion Client" VerticalAlignment="Top" Height="40" Width="780" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Center" Foreground="#FF111111" FontWeight="Bold"/>
+        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid Background="#FFEEEAEA">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="59*"/>
+                <RowDefinition Height="156*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Choix application -->
-        <Grid HorizontalAlignment="Left" Height="282" Margin="10,102,10,0" VerticalAlignment="Top" Width="780">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!-- Titre -->
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Gestion Client" VerticalAlignment="Center" Height="40" Width="780" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Center" Foreground="#FF111111" FontWeight="Bold"/>
 
-            <Button Grid.Column="0" Background="#FFEA601F" BorderBrush="#FFE85510" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Margin="0,0,15,0" Command="{Binding GoToClientCommand}" Cursor="Hand">Client</Button>
-            <Button Grid.Column="1" Background="#FFE43030" BorderBrush="#FFE85510" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Margin="15,0,0,0" Command="{Binding GoToGestionnaireCommand}">Gestionnaire</Button>
+            <!-- Choix application -->
+            <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="780" Height="239" Margin="0,27,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Background="#FFEA601F" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Command="{Binding GoToClientCommand}" Cursor="Hand" BorderBrush="{x:Null}" Margin="30,0,30,0">Client</Button>
+                <Button Grid.Column="1" Background="#FFE43030" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Command="{Binding GoToGestionnaireCommand}" BorderBrush="{x:Null}" Margin="30,0,30,0">Gestionnaire</Button>
+            </Grid>
+
+            
+
         </Grid>
-
         <!-- Footer -->
-        <Rectangle Fill="#FF111111" HorizontalAlignment="Left" Height="12" Margin="0,407,0,0" VerticalAlignment="Top" Width="792" />
-
+        <Rectangle Fill="Black" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

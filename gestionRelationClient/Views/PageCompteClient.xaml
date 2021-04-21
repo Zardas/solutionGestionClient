@@ -5,50 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="27*" />
-            <RowDefinition Height="97*" />
-            <RowDefinition Height="306*" />
-        </Grid.RowDefinitions>
-        <!-- Menu de navigation -->
-        <Grid DockPanel.Dock="Top" Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="4*"/>
-            </Grid.ColumnDefinitions>
-            <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
-                <MenuItem.Icon>
-                    <Image Source="ressources/img/home.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Modifier" Command="{Binding GoToModificationCompteCommand}"  Grid.Column="1" Cursor="Hand">
-                <MenuItem.Icon>
-                    <Image Source="ressources/img/option.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Deconnexion" Command="{Binding GoToAccueilCommand}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
-                <MenuItem.Icon>
-                    <Image Source="ressources/img/deconnexion.png" HorizontalAlignment="Stretch" />
-                </MenuItem.Icon>
-            </MenuItem>
-        </Grid>
-
-        <!-- Titre -->
-        <Grid Margin="0,6,0,0" Grid.Row="1">
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="18*" />
+                <RowDefinition Height="44*" />
+                <RowDefinition Height="153*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="{Binding NomCompte, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Height="34" Width="210" Margin="27,0,0,0" />
-            <TextBlock Grid.Row="1" Text="{Binding NomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Height="34" Width="188" Margin="27,0,0,0" />
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Modifier" Command="{Binding GoToModificationCompteCommand}"  Grid.Column="1" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="ressources/img/option.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Deconnexion" Command="{Binding GoToAccueilCommand}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem.Icon>
+                        <Image Source="ressources/img/deconnexion.png" HorizontalAlignment="Stretch" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+            <!-- Titre -->
+            <Grid Margin="0,6,0,0" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding NomCompte, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Height="34" Width="612" Margin="27,0,0,0" />
+                <TextBlock Grid.Row="1" Text="{Binding NomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Height="34" Width="612" Margin="27,0,0,0" />
+            </Grid>
+
+
+
+            <Grid Grid.Row="2" Margin="109,28,109,28">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Content="Mes articles" Command="{Binding ModificationNomCompteCommand}" Foreground="#393254" FontFamily="Euphemia" FontSize="24" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold"/>
+                <Button Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Content="Nouveaux achats" Command="{Binding GoToListArticleCommand}" Foreground="#FF394B54" FontFamily="Euphemia" FontSize="24" Background="#3bbc5f" BorderBrush="{x:Null}" FontWeight="Bold"/>
+                <Button Grid.Column="0" Grid.Row="1" Margin="20,20,20,20" Content="Mes factures" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF39326E" FontFamily="Euphemia" FontSize="24" Background="#3fb5db" BorderBrush="{x:Null}" FontWeight="Bold"/>
+                <Button Grid.Column="1" Grid.Row="1" Margin="20,20,20,20" Content="Mes tickets" Command="{Binding ModificationNomCompteCommand}" Opacity="0.8" Foreground="#FF912B2B" FontFamily="Euphemia" FontSize="24" Background="#e05248" BorderBrush="{x:Null}" FontWeight="Bold"/>
+
+            </Grid>
+
+
         </Grid>
-
-
-
         <!-- Footer -->
-        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" Margin="0,294,0,0" VerticalAlignment="Top" Width="800" Grid.Row="2" />
+        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

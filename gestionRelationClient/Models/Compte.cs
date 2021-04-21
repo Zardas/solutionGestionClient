@@ -40,9 +40,9 @@ namespace gestionRelationClient.Models
         }
 
         // TODO
-        public void ModifierInfoCompte()
+        public void ModifierNomCompte(string nouveauNom)
         {
-
+            this.NomCompte = nouveauNom;
         }
 
         private ICollection<Article> GetArticlesPanier()

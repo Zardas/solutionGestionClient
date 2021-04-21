@@ -5,45 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" SizeToContent="Height">
+        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <!-- Titre -->
-        <TextBlock HorizontalAlignment="Center" Margin="10,31,10,0" TextWrapping="Wrap" Text="Gestion Client" VerticalAlignment="Top" Height="40" Width="772" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Center" Foreground="#FFEA601F" FontWeight="Bold"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="83*"/>
+                <RowDefinition Height="173*"/>
+                <RowDefinition Height="143*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Formulaire connexion -->
-        <StackPanel HorizontalAlignment="Left" Height="148" Margin="208,127,0,0" VerticalAlignment="Top" Width="369">
+            <!-- Titre -->
+            <TextBlock HorizontalAlignment="Center" Text="Gestion Client" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Height="42" Width="234"/>
 
-            <!-- Nom Utilisateur -->
-            <Grid Height="56" Margin="25,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <!-- Formulaire connexion -->
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="368" Height="140">
 
-                <Label Content="Login :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
-                <TextBox Text="{Binding LoginConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
-            </Grid>
+                <!-- Nom Utilisateur -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <!-- Mot de passe -->
-            <Grid Height="56" Margin="25,0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    <Label Content="Login :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Text="{Binding LoginConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                </Grid>
 
-                <Label Content="Mot de passe :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
-                <TextBox Text="{Binding MotDePasseConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
-            </Grid>
+                <!-- Mot de passe -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-            <Button Content="Connexion" Command="{Binding ConnexionClientCommand}" Margin="100,0,100,0" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" />
+                    <Label Content="Mot de passe :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Text="{Binding MotDePasseConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                </Grid>
+
+                <Button Content="Connexion" Command="{Binding ConnexionClientCommand}" Margin="100,0,100,0" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" />
 
 
-        </StackPanel>
+            </StackPanel>
 
-        <!-- Pas encore inscrit -->
-        <Button HorizontalAlignment="Center" Margin="267,280,277,0" Content="Pas encore inscrit ? Inscription." VerticalAlignment="Top" Width="250" FontSize="16" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Cursor="Hand" Command="{Binding GoToClientInscription}" BorderBrush="{x:Null}" Background="{x:Null}" />
+            <!-- Pas encore inscrit -->
+            <Button Grid.Row="2" HorizontalAlignment="Center" Content="Pas encore inscrit ? Inscription." VerticalAlignment="Top" Width="250" FontSize="16" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Cursor="Hand" Command="{Binding GoToClientInscription}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,15,0,0" Height="22" />
 
+
+        </Grid>
         <!-- Footer -->
-        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" Margin="0,418,0,0" VerticalAlignment="Top" Width="802" />
+        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

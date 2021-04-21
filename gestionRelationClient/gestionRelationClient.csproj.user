@@ -10,6 +10,9 @@
     <Compile Update="Views\Accueil.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Achat_ListeArticle.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ConnexionClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ListeCompteClient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ModificationCompte.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PageCompteClient.xaml.cs">
@@ -30,6 +36,9 @@
     <Page Update="Views\Accueil.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Achat_ListeArticle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ConnexionClient.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -37,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ListeCompteClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModificationCompte.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PageCompteClient.xaml">

@@ -5,17 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" SizeToContent="WidthAndHeight">
+        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        
-        <!-- Menu de navigation -->
-            <Grid DockPanel.Dock="Top" Width="790" Margin="5,0,5,402">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="21*"/>
+                <RowDefinition Height="63*"/>
+                <RowDefinition Height="47*"/>
+                <RowDefinition Height="198*"/>
+                <RowDefinition Height="101*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-            <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
+                <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
                     <MenuItem.Icon>
                         <Image Source="ressources/img/home.png" />
                     </MenuItem.Icon>
@@ -25,7 +33,7 @@
                         <Image Source="ressources/img/option.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-            <MenuItem Header="Deconnexion" Command="{Binding GoToAccueilCommand}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                <MenuItem Header="Deconnexion" Command="{Binding GoToAccueilCommand}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
                     <MenuItem.Icon>
                         <Image Source="ressources/img/deconnexion.png" HorizontalAlignment="Stretch" />
                     </MenuItem.Icon>
@@ -33,51 +41,59 @@
             </Grid>
 
 
-        <!-- Titre -->
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="256" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Padding="75,0,0,0" Margin="0,28,0,0">
-            Bienvenue
-        </TextBlock>
-        <TextBlock Text="{Binding nomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="256" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Margin="256,28,0,0" />
+            <!-- Titre -->
+            <Grid Margin="0,21,0,0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Padding="75,0,0,0">
+                Bienvenue
+                </TextBlock>
+                <TextBlock Grid.Row="1" Text="{Binding nomClient, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Padding="75,0,0,0" />
 
-        <!--- Bouton ajouter un compte -->
-        <Grid Margin="72,74,328,289">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75" />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+            </Grid>
 
-            <Label Content="Nom :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
-            <TextBox Text="{Binding NomNouveauCompte, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
-            <Button Content="Ajouter un compte" Command="{Binding AjoutCompteCommand}" Grid.Column="2" Margin="5,0,0,0" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" Cursor="Hand" />
+            <!--- Bouton ajouter un compte -->
+            <Grid Grid.Row="1" Margin="0,63,400,0" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75" />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Content="Nom :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                <TextBox Text="{Binding NomNouveauCompte, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                <Button Content="Ajouter un compte" Command="{Binding AjoutCompteCommand}" Grid.Column="2" Margin="5,0,0,0" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" Cursor="Hand" />
+
+            </Grid>
+
+
+
+            <!-- Liste des compte-->
+            <ListBox Grid.Row="3" x:Name="ListBoxComptes" ItemsSource="{Binding Comptes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" Background="#FFCCCFC7" BorderBrush="#FF3A3A3A" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="10,1,276,10">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                            <TextBlock Text="{Binding Path=NomCompte}" Grid.Column="0" />
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <!-- <Button Content="Sélectionner" Grid.Column="1" Command="{Binding SelectionnerCompteCommand}" CommandParameter="{Binding ElementName=ListBox, Path=SelectedItems}"/>-->
+            <Button Grid.Row="3" Content="Sélectionner ce compte" HorizontalAlignment="Left" Command="{Binding SelectionnerCompteCommand}" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Margin="12,198,0,68" Width="512" Grid.RowSpan="2" />
+
+
 
         </Grid>
-
-
-
-        <!-- Liste des compte-->
-        <ListBox x:Name="ListBoxComptes" ItemsSource="{Binding Comptes, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedItem, UpdateSourceTrigger=PropertyChanged}" Height="150px" Margin="72,146,250,102" Background="#FFCCCFC7" BorderBrush="#FF3A3A3A" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                        <TextBlock Text="{Binding Path=NomCompte}" Grid.Column="0" />
-
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-        <!-- <Button Content="Sélectionner" Grid.Column="1" Command="{Binding SelectionnerCompteCommand}" CommandParameter="{Binding ElementName=ListBox, Path=SelectedItems}"/>-->
-        <Button Content="Sélectionner ce compte" Command="{Binding SelectionnerCompteCommand}" Margin="72,333,250,69" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" Cursor="Hand" />
-
-
-
         <!-- Footer -->
-        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" Margin="0,418,0,0" VerticalAlignment="Top" Width="800" />
+        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

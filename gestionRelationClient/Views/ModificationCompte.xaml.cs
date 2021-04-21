@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace gestionRelationClient.Views
 {
     /// <summary>
-    /// Logique d'interaction pour PageCompteClient.xaml
+    /// Logique d'interaction pour ModificationCompte.xaml
     /// </summary>
-    public partial class PageCompteClient : Window
+    public partial class ModificationCompte : Window
     {
-        public PageCompteClient(int compteId)
+        public ModificationCompte(int compteId)
         {
             InitializeComponent();
             DataContext = new ViewModels.PageCompteClientViewModel(this, compteId);
