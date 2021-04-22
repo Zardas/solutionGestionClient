@@ -61,7 +61,7 @@ namespace gestionRelationClient.DatabaseContext
                 new Models.Stock() { StockId=1, Titre="Stock par défaut"} // Stock 1 est le stock par défaut
             );
 
-            
+
             modelBuilder.Entity<Models.Produit>().HasData(
                 new Models.Produit() { Id = 1, Description = "Logiciel caisse simple", Nom="Caisse_basic", Capacite=3, Prix=60, AbonnementId=1, StockId=1, Image="ressources/img/articleImg_caisse.jpg" },
                 new Models.Produit() { Id = 2, Description = "Logiciel cassie medium", Nom="Caisse_medium", Capacite=3, Prix=100, AbonnementId=1, StockId=1, Image="ressources/img/articleImg_caisse.jpg" }

@@ -20,6 +20,11 @@ namespace gestionRelationClient.ViewModels
 
         private Models.Article Article;
         public string NomArticle { get; set; }
+        public string ImageArticle { get; set; }
+        public string TypeArticle { get; set; }
+        public string PrixArticle { get; set; }
+        public string DescriptionArticle { get; set; }
+        public string ManuelArticle { get; set; }
 
 
         public AchatArticleDetailViewModel(Window window, int idCompte, int idArticle)
@@ -33,7 +38,11 @@ namespace gestionRelationClient.ViewModels
             this.Article = DBContext.Articles.Where(a => (a.Id.Equals(idArticle))).FirstOrDefault();
 
             this.NomArticle = this.Article.Nom;
-            MessageBox.Show("Nom article : " + this.NomArticle);
+            this.ImageArticle = this.Article.Image;
+            this.TypeArticle = this.Article.Type;
+            this.PrixArticle = this.Article.Prix + " $";
+            this.DescriptionArticle = this.Article.GetArticleDetails();
+            this.ManuelArticle = this.ManuelArticle;
 
 
 
@@ -60,6 +69,14 @@ namespace gestionRelationClient.ViewModels
                 o => true,
                 o => OpenListeArticles()
             );
+            GoToPanier = new RelayCommand(
+                o => true,
+                o => OpenPanier()
+            );
+            AjouterArticlePanierCommand = new RelayCommand(
+                o => true,
+                o => AjouterArticlePanier()
+            );
         }
 
 
@@ -70,6 +87,25 @@ namespace gestionRelationClient.ViewModels
         public ICommand GoToPageCompteCommand { get; private set; }
         public ICommand GoToListeCompteClientCommand { get; private set; }
         public ICommand GoToListeArticles { get; private set; }
+        public ICommand GoToPanier { get; private set; }
+        public ICommand AjouterArticlePanierCommand { get; private set; }
+
+
+
+
+
+
+        // Ajout de l'article au panier
+        private void AjouterArticlePanier()
+        {
+            Models.Panier panier = DBContext.Paniers.Where(p => (p.CompteId.Equals(this.IdCompte))).FirstOrDefault();
+
+            panier.AjoutArticle(Article);
+            DBContext.SaveChanges();
+            MessageBox.Show("Article ajouté à votre panier");
+
+            this.OpenListeArticles();
+        }
 
 
 
@@ -90,8 +126,8 @@ namespace gestionRelationClient.ViewModels
         }
         private void OpenModificationCompte()
         {
-            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
-            Views.ModificationCompte modificationCompte = new Views.ModificationCompte(compte.CompteId);
+            //Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Views.ModificationCompte modificationCompte = new Views.ModificationCompte(IdCompte);
             modificationCompte.Show();
             _window.Close();
         }
@@ -105,16 +141,21 @@ namespace gestionRelationClient.ViewModels
         }
         private void OpenPageClient()
         {
-            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
-            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(compte.CompteId);
+            //Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
+            Views.PageCompteClient pageCompteClient = new Views.PageCompteClient(IdCompte);
             pageCompteClient.Show();
             _window.Close();
         }
         private void OpenListeArticles()
         {
-            Models.Compte compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(IdCompte))).FirstOrDefault();
-            Views.Achat_ListeArticle achat_ListeArticle = new Views.Achat_ListeArticle(compte.CompteId);
+            Views.Achat_ListeArticle achat_ListeArticle = new Views.Achat_ListeArticle(IdCompte);
             achat_ListeArticle.Show();
+            _window.Close();
+        }
+        private void OpenPanier()
+        {
+            Views.Panier panier = new Views.Panier(IdCompte);
+            panier.Show();
             _window.Close();
         }
     }

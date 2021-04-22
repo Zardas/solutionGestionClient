@@ -20,6 +20,9 @@ namespace gestionRelationClient.Models
         public String Type { get; set; }
         public String Manuel { get; set; }
 
+        // Un article est lié à un Panier
+        public int PanierId { get; set; }
+        //public Panier Panier;
         
         // Un article peut être lié à plusieurs supports (beaucoup s'il est nul)
         public ICollection<Support> Supports;
@@ -42,9 +45,9 @@ namespace gestionRelationClient.Models
         }
 
         //TODO
-        public void GetArticleDetails()
+        public string GetArticleDetails()
         {
-
+            return this.Description;
         }
     }
 }

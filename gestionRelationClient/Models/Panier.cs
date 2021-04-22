@@ -19,8 +19,11 @@ namespace gestionRelationClient.Models
 
         public Panier()
         {
-
+            this.Articles = new List<Article>();
         }
+
+
+
         public Panier(Compte compte)
         {
             this.Compte = compte;
@@ -28,6 +31,12 @@ namespace gestionRelationClient.Models
 
             this.Articles = new List<Article>();
             
+        }
+
+        public void AjoutArticle(Article article)
+        {
+            article.PanierId = this.PanierId;
+            this.Articles.Add(article);
         }
 
         public ICollection<Article> GetAllArticles()
@@ -41,7 +50,7 @@ namespace gestionRelationClient.Models
 
         }
 
-        public void getPrixTotal()
+        public int getPrixTotal()
         {
             int prixTotal = 0;
 
@@ -49,6 +58,7 @@ namespace gestionRelationClient.Models
             {
                 prixTotal += article.Prix;
             }
+            return prixTotal;
         }
 
     }

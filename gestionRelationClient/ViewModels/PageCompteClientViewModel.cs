@@ -76,6 +76,10 @@ namespace gestionRelationClient.ViewModels
                 o => true,
                 o => OpenListeArticle()
             );
+            GoToPanierCommand = new RelayCommand(
+                o => true,
+                o => OpenPanier()
+            );
         }
 
 
@@ -86,6 +90,7 @@ namespace gestionRelationClient.ViewModels
         public ICommand GoToListeCompteClientCommand { get; private set; }
         public ICommand ModificationNomCompteCommand { get; private set; }
         public ICommand GoToListArticleCommand { get; private set; }
+        public ICommand GoToPanierCommand { get; private set; }
 
 
 
@@ -159,6 +164,12 @@ namespace gestionRelationClient.ViewModels
         {
             Views.Achat_ListeArticle achat_ListeArticle = new Views.Achat_ListeArticle(Compte.CompteId);
             achat_ListeArticle.Show();
+            _window.Close();
+        }
+        private void OpenPanier()
+        {
+            Views.Panier panier = new Views.Panier(Compte.CompteId);
+            panier.Show();
             _window.Close();
         }
     }
