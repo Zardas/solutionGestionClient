@@ -8,5 +8,6 @@ namespace gestionRelationClient.Models
     //[Table("Service")]
     class Service : Article
     {
+        //public string Conditions { get; set; }
     }
 }

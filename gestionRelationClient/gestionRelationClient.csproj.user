@@ -16,6 +16,12 @@
     <Compile Update="Views\Achat_ListeArticle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AjoutProduit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AjoutService.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\ConnexionClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -25,10 +31,16 @@
     <Compile Update="Views\Consultation_DetailsArticle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Consultation_DetailsArticleGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\InscriptionClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\InscriptionGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ListeArticleGestionnaire.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\ListeCompteClient.xaml.cs">
@@ -60,6 +72,12 @@
     <Page Update="Views\Achat_ListeArticle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\AjoutProduit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AjoutService.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\ConnexionClient.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -69,10 +87,16 @@
     <Page Update="Views\Consultation_DetailsArticle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Views\Consultation_DetailsArticleGestionnaire.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\InscriptionClient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\InscriptionGestionnaire.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ListeArticleGestionnaire.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ListeCompteClient.xaml">

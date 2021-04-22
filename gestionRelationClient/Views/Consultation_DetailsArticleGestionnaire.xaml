@@ -1,11 +1,11 @@
-﻿<Window x:Class="gestionRelationClient.Views.Achat_DetailsArticle"
+﻿<Window x:Class="gestionRelationClient.Views.Consultation_DetailsArticleGestionnaire"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Système de gestion client - Gestionnaire" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
-                <MenuItem Header="Accueil" Command="{Binding GoToListeCompteClientCommand}"  Grid.Column="0" Cursor="Hand">
+                <MenuItem Header="Accueil" Command="{Binding GoToPageGestionnaireCommand}"  Grid.Column="0" Cursor="Hand">
                     <MenuItem.Icon>
                         <Image Source="ressources/img/home.png" />
                     </MenuItem.Icon>
@@ -38,11 +38,11 @@
             <!-- Retour en arrière et panier-->
             <Grid Margin="0,27,0,0" Grid.RowSpan="2">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="37*"/>
+                    <ColumnDefinition Width="40*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="&lt; Retour" Command="{Binding GoToListeArticles}" Grid.Column="0" Margin="5,18,294,17" Foreground="#FFEA601F" BorderBrush="{x:Null}" Height="28" Background="{x:Null}" Cursor="Hand" FontSize="14" />
-                <Button Content="Panier >" Command="{Binding GoToPanier}" Grid.Column="1" Margin="289,18,10,17" Foreground="#FFEA601F" BorderBrush="{x:Null}" Height="28" Background="{x:Null}" Cursor="Hand" FontSize="14" />
+                <Button Content="&lt; Retour" Command="{Binding GoToListeArticlesCommand}" Grid.Column="0" Margin="5,31,294,24" Foreground="#FFE43030" BorderBrush="{x:Null}" Background="{x:Null}" Cursor="Hand" FontSize="14" Grid.ColumnSpan="2" />
             </Grid>
 
 
@@ -70,8 +70,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding NomArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" />
-                        <TextBlock Grid.Row="1" Text="{Binding TypeArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontStyle="Italic" />
+                        <TextBlock Grid.Row="0" Text="{Binding NomArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="30" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFE43030" />
+                        <TextBlock Grid.Row="1" Text="{Binding TypeArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="22" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFE43030" FontStyle="Italic" />
                     </Grid>
                     <!-- Prix et Bouton "Ajouter au panier -->
                     <Grid Grid.Column="2" Margin="15,0,15,0">
@@ -79,8 +79,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="{Binding PrixArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" Margin="0,0,15,0" />
-                        <Button Grid.Row="1" Content="Ajouter au panier" Command="{Binding AjouterArticlePanierCommand}" VerticalAlignment="Center" Foreground="#393254" FontFamily="Euphemia" FontSize="16" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand" Margin="2,0,2,0"/>
+                        <TextBlock Grid.Row="0" Text="{Binding PrixArticle, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="22" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFE43030" Margin="0,0,15,0" />
+                        <!--<Button Grid.Row="1" Content="Ajouter au panier" Command="{Binding AjouterArticlePanierCommand}" VerticalAlignment="Center" Foreground="#393254" FontFamily="Euphemia" FontSize="16" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand" Margin="2,0,2,0"/>-->
                     </Grid>
                 </Grid>
                 <!-- Ligne 2 : description -->
@@ -88,11 +88,11 @@
                 <!-- Ligne 3 : manuel -->
                 <TextBlock Grid.Row="2" Text="{Binding ManuelArticle, UpdateSourceTrigger=PropertyChanged}" TextWrapping="WrapWithOverflow" Margin="15,10,15,0" />
             </Grid>
-            
+
 
 
         </Grid>
         <!-- Footer -->
-        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
+        <Rectangle Fill="#FFE43030" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

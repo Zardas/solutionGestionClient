@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gestionRelationClient.Views"
         mc:Ignorable="d"
-        Title="Système de gestion client - Page gestionnaire" Height="450" Width="800" ResizeMode="NoResize">
+        Title="Système de gestion client - Page gestionnaire" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
@@ -54,9 +54,9 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Content="Ajouter un service" Command="{Binding GoToPanierCommand}" Foreground="#FF912B2B" FontFamily="Euphemia" FontSize="24" Background="#e05248" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
-                <Button Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Content="Ajouter un produit" Command="{Binding GoToListArticleCommand}" Foreground="#FF394B54" FontFamily="Euphemia" FontSize="24" Background="#3bbc5f" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
-                <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,20,20,20" Content="Liste des articles" Command="{Binding ModificationNomCompteCommand}" Foreground="#393254" FontFamily="Euphemia" FontSize="24" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="0" Grid.Row="0" Margin="20,20,20,20" Content="Ajouter un service" Command="{Binding GoToAjoutServiceCommand}" Foreground="#FF912B2B" FontFamily="Euphemia" FontSize="24" Background="#e05248" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="1" Grid.Row="0" Margin="20,20,20,20" Content="Ajouter un produit" Command="{Binding GoToAjoutProduitCommand}" Foreground="#FF394B54" FontFamily="Euphemia" FontSize="24" Background="#3bbc5f" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
+                <Button Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="20,20,20,20" Content="Liste des articles" Command="{Binding GoToListeArticleGestionnaire}" Foreground="#393254" FontFamily="Euphemia" FontSize="24" Background="#b67ada" BorderBrush="{x:Null}" FontWeight="Bold" Cursor="Hand"/>
 
             </Grid>
 

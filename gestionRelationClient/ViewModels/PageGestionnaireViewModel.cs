@@ -40,12 +40,27 @@ namespace gestionRelationClient.ViewModels
                 o => true,
                 o => OpenPageGestionnaire()
             );
+            GoToAjoutServiceCommand = new RelayCommand(
+                o => true,
+                o => OpenPageAjoutService()
+            );
+            GoToAjoutProduitCommand = new RelayCommand(
+                o => true,
+                o => OpenPageAjoutProduit()
+            );
+            GoToListeArticleGestionnaire = new RelayCommand(
+                o => true,
+                o => OpenListeArticleGestionnaire()
+            );
         }
 
 
         /* definition of the commands */
         public ICommand GoToAccueilCommand { get; private set; }
         public ICommand GoToPageGestionnaire { get; private set; }
+        public ICommand GoToAjoutServiceCommand { get; private set; }
+        public ICommand GoToAjoutProduitCommand { get; private set; }
+        public ICommand GoToListeArticleGestionnaire { get; private set; }
 
 
 
@@ -63,6 +78,24 @@ namespace gestionRelationClient.ViewModels
         {
             Views.PageGestionnaire pageGestionnaire = new Views.PageGestionnaire(Gestionnaire.Id);
             pageGestionnaire.Show();
+            _window.Close();
+        }
+        private void OpenPageAjoutService()
+        {
+            Views.AjoutService ajoutService = new Views.AjoutService(Gestionnaire.Id);
+            ajoutService.Show();
+            _window.Close();
+        }
+        private void OpenPageAjoutProduit()
+        {
+            Views.AjoutProduit ajoutProduit = new Views.AjoutProduit(Gestionnaire.Id);
+            ajoutProduit.Show();
+            _window.Close();
+        }
+        private void OpenListeArticleGestionnaire()
+        {
+            Views.ListeArticleGestionnaire listeArticleGestionnaire = new Views.ListeArticleGestionnaire(Gestionnaire.Id);
+            listeArticleGestionnaire.Show();
             _window.Close();
         }
     }
