@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button Grid.Column="0" Background="#FFEA601F" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Command="{Binding GoToClientCommand}" Cursor="Hand" BorderBrush="{x:Null}" Margin="30,0,30,0">Client</Button>
-                <Button Grid.Column="1" Background="#FFE43030" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Command="{Binding GoToGestionnaireCommand}" BorderBrush="{x:Null}" Margin="30,0,30,0">Gestionnaire</Button>
+                <Button Grid.Column="1" Background="#FFE43030" Foreground="#FFE4E4E4" FontWeight="Bold" FontFamily="Linux Biolinum G" FontSize="36" Command="{Binding GoToGestionnaireCommand}" BorderBrush="{x:Null}" Margin="30,0,30,0" Cursor="Hand">Gestionnaire</Button>
             </Grid>
 
             

@@ -44,14 +44,13 @@ namespace gestionRelationClient.ViewModels
             Views.ConnexionClient connexionClient = new Views.ConnexionClient();
             connexionClient.Show();
             _window.Close();
-            //MessageBox.Show("flag");
         }
 
         private void OpenGestionnaire()
         {
-            /*ConnexionClient connexionClient = new ConnexionClient();
-            connexionClient.Show();
-            _window.Close();*/
+            Views.ConnexionGestionnaire connexionGestionnaire = new Views.ConnexionGestionnaire();
+            connexionGestionnaire.Show();
+            _window.Close();
         }
 
         /* definition of PropertyChanged */
