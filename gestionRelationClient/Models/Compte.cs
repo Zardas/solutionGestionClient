@@ -29,7 +29,7 @@ namespace gestionRelationClient.Models
             this.Factures = new List<Facture>();
             this.Supports = new List<Support>();
 
-            this.Panier = new Panier(this);
+            //this.Panier = new Panier(this);
         }
 
 

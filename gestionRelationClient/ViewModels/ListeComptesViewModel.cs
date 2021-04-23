@@ -149,6 +149,8 @@ namespace gestionRelationClient.ViewModels
             } else
             {
                 int nbComptes = DBContext.Comptes.Count();
+
+
                 Models.Compte compteToAdd = new Models.Compte()
                 {
                     //CompteId = nbComptes+2, // Oon doit trouver tout les comptes pour affecter le bon id au niveau du modèle (+2 parce qu'il ne faut incrémenter (+1) et que ça ne commence pas à 0 (+1)
@@ -161,8 +163,19 @@ namespace gestionRelationClient.ViewModels
                 DBContext.Add(compteToAdd);
                 DBContext.SaveChanges();
 
-                compteToAdd.CompteId = nbComptes + 2;
-                this.Comptes.Add(compteToAdd);
+
+
+                Models.Panier panierToAdd = new Models.Panier()
+                {
+                    Compte = compteToAdd
+                };
+                DBContext.Add(panierToAdd);
+                DBContext.SaveChanges();
+
+
+                OpenListeCompteClient(Client);
+                /*compteToAdd.CompteId = nbComptes + 2;
+                this.Comptes.Add(compteToAdd);*/
 
 
 
