@@ -44,9 +44,9 @@ namespace gestionRelationClient.ViewModels
             this._window = window;
             DBContext = new DatabaseContext.GestionRelationClient_DBContext();
 
-            MessageBox.Show("Compte Id : " + idCompte);
+
             this.Compte = DBContext.Comptes.Where(c => (c.CompteId.Equals(idCompte))).FirstOrDefault();
-            MessageBox.Show("ClientId : " + this.Compte.ClientId);
+
             this.Client = DBContext.Utilisateurs.Where(c => (c.Id.Equals(this.Compte.ClientId))).FirstOrDefault();
             
 
