@@ -32,7 +32,7 @@ namespace gestionRelationClient.DatabaseContext
                                                     TrustServerCertificate=False;
                                                     ApplicationIntent=ReadWrite;
                                                     MultiSubnetFailover=False;
-                                                    Database=TP2_AntoineGodet_BDD;
+                                                    Database=GestionClientDatabase12;
                                                     Trusted_Connection=True");
         }
 
