@@ -5,11 +5,8 @@ using System.Threading.Tasks;
 
 namespace GestionClientAPI.Models
 {
-    // Utilisé pour injecter un abonnement dans la bdd
-    public class AbonnementModel
+    public class ServiceModel : ArticleModel
     {
-
-        public int DureeAbonnement { get; set; }
-
+        public string Conditions { get; set; }
     }
 }
