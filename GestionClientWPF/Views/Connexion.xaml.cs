@@ -13,14 +13,14 @@ using System.Windows.Shapes;
 namespace GestionClientWPF.Views
 {
     /// <summary>
-    /// Interaction logic for Accueil.xaml
+    /// Interaction logic for Connexion.xaml
     /// </summary>
-    public partial class Accueil : Window
+    public partial class Connexion : Window
     {
-        public Accueil()
+        public Connexion()
         {
             InitializeComponent();
-            DataContext = new ViewModels.AccueilViewModel(this);
+            DataContext = new ViewModels.ConnexionViewModel(this);
         }
     }
 }

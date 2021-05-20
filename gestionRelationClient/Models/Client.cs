@@ -9,44 +9,24 @@ namespace gestionRelationClient.Models
     class Client : Utilisateur
     {
 
-        //public int ClientId { get; set; }
         public String Nom { get; set; }
+
         public String Prenom { get; set; }
+
         public String Mail { get; set; }
+
         public String Telephone { get; set; }
+
         public int Age { get; set; }
+
 
         // Un client possède plusieurs comptes
         public ICollection<Compte> Comptes;
 
-        public Client()
-        {
-            this.Comptes = new List<Compte>();
-        }
+        public int GestionnaireAssocieId { get; set; }
 
-        // TODO ?
-        public void SeConnecter()
-        {
+        public int Solde { get; set; }
 
-        }
-
-        // TODO ?
-        public void Inscrire()
-        {
-
-        }
-
-        // TODO ?
-        public void Recherche()
-        {
-
-        }
-
-        // TODO
-        public void ModifierProfil()
-        {
-
-        }
 
     }
 }

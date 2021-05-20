@@ -35,18 +35,24 @@ namespace GestionClientWPF.ViewModels
             return new List<Client>();
         }
 
-        public async Task<Utilisateur> GetUtilisateurPourConnexionAsync(string path)
+        public class ResultConnexion
+        {
+            public int Id;
+            public string Type;
+        }
+
+        public async Task<ResultConnexion> GetUtilisateurPourConnexionAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();
-                Utilisateur utilisateur = JsonConvert.DeserializeObject<Utilisateur>(data);
+                ResultConnexion utilisateur = JsonConvert.DeserializeObject<ResultConnexion>(data);
                 return utilisateur;
             }
 
-            return new Utilisateur();
+            return null;
         }
 
 
@@ -70,13 +76,13 @@ namespace GestionClientWPF.ViewModels
         }
 
         // Pour la connexion
-        public Utilisateur GetUtilisateurPourConnexion(string path)
+        public ResultConnexion GetUtilisateurPourConnexion(string path)
         {
-            Utilisateur utilisateur = new Utilisateur();
+            ResultConnexion utilisateur = new ResultConnexion();
 
             try
             {
-                Task<Utilisateur> task = Task.Run(async () => await GetUtilisateurPourConnexionAsync(path));
+                Task<ResultConnexion> task = Task.Run(async () => await GetUtilisateurPourConnexionAsync(path));
                 task.Wait();
                 utilisateur = task.Result;
             }

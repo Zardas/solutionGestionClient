@@ -20,15 +20,6 @@ namespace gestionRelationClient.Models
         // Un sopprot peut être lié à plusieurs articles
         public ICollection<Article> Articles { get; set; }
 
-        // TODO
-        public Support()
-        {
-            this.Articles = new List<Article>();
-        }
-        // TODO
-        public void ModifierSupport()
-        {
 
-        }
     }
 }

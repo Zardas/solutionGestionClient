@@ -1,5 +1,4 @@
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.csprojAssemblyReference.cache
-C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Accueil.g.cs
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF_MarkupCompile.cache
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF_MarkupCompile.lref
@@ -13,7 +12,6 @@ C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gesti
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
-C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Accueil.baml
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.g.resources
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.AssemblyInfoInputs.cache
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.AssemblyInfo.cs
@@ -22,3 +20,13 @@ C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gesti
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.dll
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.pdb
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\GestionClientWPF.genruntimeconfig.cache
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Connexion.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Inscription.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\InterfaceAdministrateur.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\InterfaceCommercial.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ListeComptesClient.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Connexion.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\Inscription.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\InterfaceAdministrateur.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\InterfaceCommercial.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ListeComptesClient.baml

@@ -7,12 +7,7 @@ namespace gestionRelationClient.Models
 {
     public abstract class Article
     {
-
-        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
-        //public int ArticleId { get; set; }
-
-        [Key]
-        public int Id { get; set; }
+        public int ArticleId { get; set; }
         public String Nom { get; set; }
         public String Description { get; set; }
         public int Prix { get; set; }
@@ -23,7 +18,7 @@ namespace gestionRelationClient.Models
         // Un article est lié à un Panier
         public int PanierId { get; set; }
         //public Panier Panier;
-        
+
         // Un article peut être lié à plusieurs supports (beaucoup s'il est nul)
         public ICollection<Support> Supports;
 
@@ -35,19 +30,6 @@ namespace gestionRelationClient.Models
         public Article()
         {
             this.Supports = new List<Support>();
-        }
-
-
-        // TODO ?
-        public void AfficherArticle()
-        {
-
-        }
-
-        //TODO
-        public string GetArticleDetails()
-        {
-            return this.Description;
         }
     }
 }

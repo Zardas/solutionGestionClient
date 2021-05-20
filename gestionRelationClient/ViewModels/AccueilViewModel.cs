@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Input;
-
+using gestionRelationClient.Models;
 
 namespace gestionRelationClient.ViewModels
 {
@@ -13,6 +13,21 @@ namespace gestionRelationClient.ViewModels
         /* reference to the current window */
         private readonly Window _window;
 
+        /* RestAPI */
+        private RestApiQueries _restApiQueries;
+
+
+
+        /* Tests */
+        private ObservableCollection<Client> _clients;
+        public ObservableCollection<Client> Clients
+        {
+            get
+            {
+                return _clients;
+            }
+        }
+
 
 
         /* constructor and initialization */
@@ -20,6 +35,9 @@ namespace gestionRelationClient.ViewModels
         {
             _window = window;
 
+            _restApiQueries = new RestApiQueries();
+
+            _clients = new ObservableCollection<Client>(_restApiQueries.GetClients("Client"));
 
 
             GoToClientCommand = new RelayCommand(

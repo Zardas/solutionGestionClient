@@ -29,20 +29,22 @@ namespace GestionClientAPI.Models
 
         public Client()
         {
+
+        }
+        public Client(string password)
+        {
             this.Comptes = new List<Compte>();
             this.Solde = 0;
-        }
-
-
-
-
-
-
-        public void Inscrire(string password)
-        {
+            this.LoginStatus = "offline";
             this.LoginStatus = "offline";
             MotDePasse = Shared.Utilitaire.HashPassword(password);
         }
+
+
+
+
+
+
 
         public void AjouterCompte(Compte newCompte)
         {

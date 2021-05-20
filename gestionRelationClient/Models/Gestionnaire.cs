@@ -8,7 +8,6 @@ namespace gestionRelationClient.Models
     //[Table("Gestionnaire")]
     class Gestionnaire : Utilisateur
     {
-        //public int GestionnaireId { get; set; }
         public string NomGestionnaire { get; set; }
         public string Email { get; set; }
 
@@ -19,6 +18,10 @@ namespace gestionRelationClient.Models
         // Un gestionnaire est responsable d'un stock
         public int StockId { get; set; }
         public Stock Stock { get; set; }
+
+        public int Gain { get; set; }
+
+        public List<Client> ClientsAssocies { get; set; }
 
         // TODO
         public void AjouterStock()

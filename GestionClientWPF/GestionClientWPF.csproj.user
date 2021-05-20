@@ -7,12 +7,36 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\Accueil.xaml.cs">
+    <Compile Update="Views\Connexion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Inscription.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InterfaceAdministrateur.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\InterfaceCommercial.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ListeComptesClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\Accueil.xaml">
+    <Page Update="Views\Connexion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Inscription.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\InterfaceAdministrateur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\InterfaceCommercial.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ListeComptesClient.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

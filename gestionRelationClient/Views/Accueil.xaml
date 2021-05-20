@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="Système de gestion client" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid Background="#FFEEEAEA">
+        <DataGrid Background="#FF937E7E"  ItemsSource="{Binding Clients, NotifyOnSourceUpdated=True}" BorderBrush="#FF1267B9">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Login}" />
+                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Nom}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Background="#FFEEEAEA" Margin="0,65,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="59*"/>
                 <RowDefinition Height="156*"/>

@@ -24,15 +24,6 @@ namespace gestionRelationClient.Models
         public Panier Panier { get; set; }
 
 
-        public Compte()
-        {
-            this.Factures = new List<Facture>();
-            this.Supports = new List<Support>();
-
-            //this.Panier = new Panier(this);
-        }
-
-
         // TODO
         private ICollection<Facture> GetFactureParPeriode()
         {

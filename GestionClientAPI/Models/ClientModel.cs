@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GestionClientAPI.Models
 {
-    public class ClientModel
+    public class ClientModel : UtilisateurModel
     {
         public String Nom { get; set; }
 
@@ -17,7 +17,5 @@ namespace GestionClientAPI.Models
 
         public int Age { get; set; }
 
-
-        public int GestionnaireAssocieId { get; set; }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace gestionRelationClient.Models
 {
-    //[Table("Produit")]
+
     class Produit : Article
     {
         // La clé primaire est déjà dans Article
