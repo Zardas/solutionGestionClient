@@ -17,7 +17,7 @@ namespace GestionClientWPF.Views
     /// </summary>
     public partial class ListeComptesClient : Window
     {
-        public ListeComptesClient(int idClient)
+        public ListeComptesClient(int idClient, string Token)
         {
             InitializeComponent();
         }

@@ -69,3 +69,4 @@ C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gesti
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientAPI\obj\Debug\netcoreapp3.1\GestionClientAPI.dll
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientAPI\obj\Debug\netcoreapp3.1\GestionClientAPI.pdb
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientAPI\obj\Debug\netcoreapp3.1\GestionClientAPI.genruntimeconfig.cache
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

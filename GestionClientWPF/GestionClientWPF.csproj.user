@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AjoutClient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Connexion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -24,6 +27,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\AjoutClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Connexion.xaml">
       <SubType>Designer</SubType>
     </Page>

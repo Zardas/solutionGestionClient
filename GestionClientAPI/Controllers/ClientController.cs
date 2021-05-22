@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using GestionClientAPI.Models.Shared;
 using GestionClientAPI.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+
     [Route("api/Client")]
     [ApiController]
     public class ClientController : ControllerBase
@@ -27,6 +29,9 @@ namespace GestionClientAPI.Controllers
             try
             {
                 List<Client> clients = _context.Clients.ToList();
+                // Le premier client est le client nul
+                clients.RemoveAt(0);
+
                 return Ok(clients); // Error code 200 StatusCode(200, clients)
             }
             catch (Exception) { }
@@ -35,7 +40,7 @@ namespace GestionClientAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddUser([FromBody] ClientModel model)
+        public IActionResult AddClient([FromBody] ClientModel model) // Passer en [FromBody] si ça ne marche pas
         {
             try
             {
@@ -70,5 +75,45 @@ namespace GestionClientAPI.Controllers
 
             return BadRequest();
         }
+
+
+            [HttpPut("{client}")]
+            public IActionResult ModifierClient(Client clientFourni) {
+
+                try
+                {
+
+                    Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(clientFourni.UtilisateurId)).FirstOrDefault();
+
+                    client.Login = clientFourni.Login;
+                    client.Mail = clientFourni.Mail;
+                    client.Nom = clientFourni.Nom;
+                    client.Prenom = clientFourni.Prenom;
+                    client.Telephone = clientFourni.Telephone;
+                    client.Age = clientFourni.Age;
+
+                    _context.SaveChanges();
+                    return Ok();
+                }
+                catch (Exception) { }
+
+                return BadRequest();
+            }
+
+            [HttpDelete("{ClientId}")]
+            public IActionResult RemoveClient(int ClientId)
+            {
+                try
+                {
+                    Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(ClientId)).FirstOrDefault();    
+
+                    _context.Remove(client);
+                    _context.SaveChanges();
+                    return Ok();
+                }
+                catch (Exception) { }
+
+                return BadRequest();
+            }
     }
 }

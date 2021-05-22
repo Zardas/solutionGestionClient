@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GestionClientWPF.Models
 {
-    class Utilisateur
+    public class Utilisateur
     {
         public int UtilisateurId { get; set; }
 

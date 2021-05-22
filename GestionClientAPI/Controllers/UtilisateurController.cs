@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 using GestionClientAPI.Models.Shared;
 using GestionClientAPI.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
-
-    [Route("api/Utilisateur")]
+    [Authorize]
+    [Route("api/[controller]")]
     [ApiController]
     public class UtilisateurController : Controller
     {
         private Models.Shared.gestionAPI_DBContext _context;
+        private readonly IJwtAuthentificationManager _jwtAuthentificationManager;
 
-        public UtilisateurController(gestionAPI_DBContext context)
+        public UtilisateurController(gestionAPI_DBContext context, IJwtAuthentificationManager jwtAuthentificationManager)
         {
             _context = context;
+            _jwtAuthentificationManager = jwtAuthentificationManager;
         }
 
         [HttpGet]
@@ -33,15 +36,19 @@ namespace GestionClientAPI.Controllers
             catch (Exception) { }
 
             return BadRequest(); // Error code 400
+
         }
 
 
+        // Pour la connexion
         private class ResultConnexion
         {
-            public int Id;
+            public string Token;
             public string Type;
+            public int Id;
         }
 
+        [AllowAnonymous]
         [HttpGet("{Login},{MotDePasse}", Name= "GetUtilisateurs")]
         public IActionResult GetUtilisateurs(string Login, string MotDePasse)
         {
@@ -51,10 +58,8 @@ namespace GestionClientAPI.Controllers
 
                 if(utilisateurATrouver == null)
                 {
-                    Debug.WriteLine("FLAG B");
                     return NoContent();
                 }
-                Debug.WriteLine("FLAG A : " + utilisateurATrouver.GetType());
 
                 string type;
                 
@@ -73,9 +78,10 @@ namespace GestionClientAPI.Controllers
                         break;
                 }
 
-                Debug.WriteLine("FLAG C " + type);
 
-                ResultConnexion resultConnexion = new ResultConnexion() { Id = utilisateurATrouver.UtilisateurId, Type = type };
+                string token = _jwtAuthentificationManager.Authentify(utilisateurATrouver.UtilisateurId);
+                ResultConnexion resultConnexion = new ResultConnexion() { Token = token, Type = type, Id = utilisateurATrouver.UtilisateurId };
+                
                 return Ok(resultConnexion);
 
             } catch(Exception) { }

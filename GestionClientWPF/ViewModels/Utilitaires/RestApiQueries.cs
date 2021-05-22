@@ -6,6 +6,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using GestionClientWPF.Models;
+using System.Diagnostics;
 
 namespace GestionClientWPF.ViewModels
 {
@@ -13,15 +14,21 @@ namespace GestionClientWPF.ViewModels
     {
         private HttpClient _client;
 
-        public RestApiQueries()
+        private string Token;
+
+        public RestApiQueries(string token)
         {
             _client = new HttpClient();
             _client.BaseAddress = new Uri("http://localhost:5000/api/");
             _client.DefaultRequestHeaders.Accept.Clear();
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // Setting Authorization.  
+            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+
+            Token = token;
         }
 
-        public async Task<List<Client>> GetClientsAsync(string path)
+        private async Task<List<Client>> GetClientsAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
@@ -37,11 +44,12 @@ namespace GestionClientWPF.ViewModels
 
         public class ResultConnexion
         {
-            public int Id;
+            public string Token;
             public string Type;
+            public int Id;
         }
 
-        public async Task<ResultConnexion> GetUtilisateurPourConnexionAsync(string path)
+        private async Task<ResultConnexion> GetUtilisateurPourConnexionAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
@@ -54,6 +62,32 @@ namespace GestionClientWPF.ViewModels
 
             return null;
         }
+
+
+
+        private async Task<bool> AddClientAsync(string path, Client client)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(client), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+        /* Methode générique */
+        private async Task<bool> RemoveAsync(string path)
+        {
+            HttpResponseMessage response = await _client.DeleteAsync(path);
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+
+
+
+
 
 
 
@@ -89,6 +123,31 @@ namespace GestionClientWPF.ViewModels
             catch (Exception) { }
 
             return utilisateur;
+        }
+
+
+        public void AddClient(string path, Client client)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await AddClientAsync(path, client));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+
+
+        // Suppression d'un élément
+        public void Remove(string path)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await RemoveAsync(path));
+                task.Wait();
+            }
+            catch (Exception) { }
+
         }
     }
 }

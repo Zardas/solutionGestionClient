@@ -7,6 +7,109 @@
         mc:Ignorable="d"
         Title="InterfaceAdministrateur" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="130,86,0,0" Text="Interface Administrateur" TextWrapping="Wrap" VerticalAlignment="Top" Height="46" Width="151"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Header="Menu" Command="{Binding GoToInterfaceAdministrateur}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Center">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Ajouter client" Command="{Binding GoToAjoutClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/plus2.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Ajouter commercial" Command="{Binding GoToAjoutGestionnaire}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/plus2.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Deconnexion" Command="{Binding GoToConnexion}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <Grid Margin="0,21,0,0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="53*"/>
+                    <ColumnDefinition Width="147*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Margin="0,0,15,0">
+                Bienvenue
+                </TextBlock>
+                <TextBlock Grid.Column="1" Text="{Binding LoginAdministrateur, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" />
+
+            </Grid>
+
+
+
+            <!-- Listes -->
+            <Grid Grid.Row="1" Margin="0,69,0,34" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Titres -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Clients" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontFamily="Linux Biolinum G" Foreground="#FF231F20" FontWeight="Bold" Margin="40,0,0,0" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="Commerciaux" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontFamily="Linux Biolinum G" Foreground="#FF231F20" FontWeight="Bold" Margin="40,0,0,0" />
+
+                <!-- Liste Clients -->
+                <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="ListeClients" ItemsSource="{Binding Clients, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedClient, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="35,0,30,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Grid.Column="0" Text="{Binding Path=Login}" />
+                                <TextBlock Grid.Column="1" Text="{Binding Path=Solde, StringFormat=Solde : {0}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!-- Liste Commerciaux -->
+                <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" x:Name="ListeGestionnaires" ItemsSource="{Binding Gestionnaires, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedGestionnaire, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="35,0,30,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Login}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Boutons -->
+                <Button Grid.Row="2" Grid.Column="0" Command="{Binding ModifierClient}" Content="Modifier" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Margin="35,5,5,5" />
+                <Button Grid.Row="2" Grid.Column="1" Command="{Binding SupprimerClient}" Content="Supprimer" Foreground="#FFEA1F1F" BorderBrush="#FFEA1F1F" Background="{x:Null}" Cursor="Hand" Margin="35,5,30,5" />
+                <Button Grid.Row="2" Grid.Column="2" Command="{Binding ModifierGestionnaire}" Content="Modifier" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Background="{x:Null}" Cursor="Hand" Margin="35,5,5,5" />
+                <Button Grid.Row="2" Grid.Column="3" Command="{Binding SupprimerGestionnaire}" Content="Supprimer" Foreground="#FFEA1F1F" BorderBrush="#FFEA1F1F" Background="{x:Null}" Cursor="Hand" Margin="35,5,30,5" />
+            </Grid>
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

@@ -51,7 +51,7 @@ namespace GestionClientWPF.ViewModels
         {
             _window = window;
 
-            _restApiQueries = new RestApiQueries();
+            _restApiQueries = new RestApiQueries(null);
 
             _router = new Router();
 
@@ -92,17 +92,17 @@ namespace GestionClientWPF.ViewModels
                 {
                     case "Client":
 
-                        _router.GoToListeCompteClient(_window, resultsConnexion.Id);
+                        _router.GoToListeCompteClient(_window, resultsConnexion.Id, resultsConnexion.Token);
                         break;
 
                     case "Gestionnaire":
 
-                        _router.GoToInterfaceCommercial(_window, resultsConnexion.Id);
+                        _router.GoToInterfaceCommercial(_window, resultsConnexion.Id, resultsConnexion.Token);
                         break;
 
                     case "Administrateur":
 
-                        _router.GoToInterfaceAdministrateur(_window, resultsConnexion.Id);
+                        _router.GoToInterfaceAdministrateur(_window, resultsConnexion.Id, resultsConnexion.Token);
                         break;
 
                     default:

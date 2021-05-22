@@ -17,7 +17,7 @@ namespace GestionClientWPF.Views
     /// </summary>
     public partial class InterfaceCommercial : Window
     {
-        public InterfaceCommercial(int idCommercial)
+        public InterfaceCommercial(int idCommercial, string Token)
         {
             InitializeComponent();
         }

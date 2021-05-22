@@ -23,23 +23,30 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
-        public void GoToInterfaceAdministrateur(Window window, int idAdministrateur)
+        public void GoToInterfaceAdministrateur(Window window, int idAdministrateur, string Token)
         {
-            Views.InterfaceAdministrateur newWindow = new Views.InterfaceAdministrateur(idAdministrateur);
+            Views.InterfaceAdministrateur newWindow = new Views.InterfaceAdministrateur(idAdministrateur, Token);
             newWindow.Show();
             window.Close();
         }
 
-        public void GoToInterfaceCommercial(Window window, int idCommercial)
+        public void GoToAjoutClient(Window window, int idAdministrateur, string Token)
         {
-            Views.InterfaceCommercial newWindow = new Views.InterfaceCommercial(idCommercial);
+            Views.AjoutClient newWindow = new Views.AjoutClient(idAdministrateur, Token);
             newWindow.Show();
             window.Close();
         }
 
-        public void GoToListeCompteClient(Window window, int idClient)
+        public void GoToInterfaceCommercial(Window window, int idCommercial, string Token)
         {
-            Views.ListeComptesClient newWindow = new Views.ListeComptesClient(idClient);
+            Views.InterfaceCommercial newWindow = new Views.InterfaceCommercial(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToListeCompteClient(Window window, int idClient, string Token)
+        {
+            Views.ListeComptesClient newWindow = new Views.ListeComptesClient(idClient, Token);
             newWindow.Show();
             window.Close();
         }

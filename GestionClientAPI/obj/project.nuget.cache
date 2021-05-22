@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "YnEDqp7os9WCqnRe1f/wPaDqiX7Z2kb4G54/yhTkiZ+OHJ705iOZk12s0UpOlXohViloibBwXSOnt0hKKAkkTQ==",
+  "dgSpecHash": "STrDBxTX2GzmjQlFNMymEJIrxsgJXB7KKAIFsU1DKbYxreV6yTxq4uSu2OCxIQs34RDZsNgcmFXjOPspCnb/9w==",
   "success": true,
   "projectFilePath": "C:\\Users\\Antoine\\Desktop\\Scolaire\\Master2Uqar\\Programmation objet avancée\\gestionRelationClient\\GestionClientAPI\\GestionClientAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Antoine\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\Antoine\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.14\\microsoft.aspnetcore.authentication.jwtbearer.3.1.14.nupkg.sha512",
     "C:\\Users\\Antoine\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.14\\microsoft.aspnetcore.jsonpatch.3.1.14.nupkg.sha512",
     "C:\\Users\\Antoine\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.14\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.14.nupkg.sha512",
     "C:\\Users\\Antoine\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

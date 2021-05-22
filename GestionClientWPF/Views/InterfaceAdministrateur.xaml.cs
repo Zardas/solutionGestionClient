@@ -17,9 +17,10 @@ namespace GestionClientWPF.Views
     /// </summary>
     public partial class InterfaceAdministrateur : Window
     {
-        public InterfaceAdministrateur(int idAdministrateur)
+        public InterfaceAdministrateur(int idAdministrateur, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.InterfaceAdministrateurViewModel(this, idAdministrateur, Token);
         }
     }
 }
