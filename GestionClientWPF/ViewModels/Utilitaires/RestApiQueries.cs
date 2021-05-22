@@ -74,6 +74,14 @@ namespace GestionClientWPF.ViewModels
             return response.IsSuccessStatusCode;
         }
 
+        private async Task<bool> ModifierClientAsync(string path, Client client)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(client), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
 
         /* Methode générique */
         private async Task<bool> RemoveAsync(string path)
@@ -137,6 +145,17 @@ namespace GestionClientWPF.ViewModels
 
         }
 
+        // Modification d'un client
+        public void ModifierClient(string path, Client client)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierClientAsync(path, client));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
 
         // Suppression d'un élément
         public void Remove(string path)

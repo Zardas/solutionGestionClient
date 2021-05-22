@@ -1,5 +1,7 @@
-﻿using System;
+﻿using GestionClientWPF.Models;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 
@@ -33,6 +35,13 @@ namespace GestionClientWPF.ViewModels
         public void GoToAjoutClient(Window window, int idAdministrateur, string Token)
         {
             Views.AjoutClient newWindow = new Views.AjoutClient(idAdministrateur, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToModificationClient(Window window, int idAdministrateur, string Token, Client client)
+        {
+            Views.ModificationClient newWindow = new Views.ModificationClient(idAdministrateur, Token, client);
             newWindow.Show();
             window.Close();
         }

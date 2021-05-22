@@ -25,6 +25,9 @@
     <Compile Update="Views\ListeComptesClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ModificationClient.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AjoutClient.xaml">
@@ -43,6 +46,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ListeComptesClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModificationClient.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

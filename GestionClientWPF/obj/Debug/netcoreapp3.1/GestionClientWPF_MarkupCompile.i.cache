@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\App.xaml
-6-273722041
+71214341456
 
-32-1135157482
+341757884224
 3191726005272
-Views\AjoutClient.xaml;Views\Connexion.xaml;Views\Inscription.xaml;Views\InterfaceAdministrateur.xaml;Views\InterfaceCommercial.xaml;Views\ListeComptesClient.xaml;
+Views\AjoutClient.xaml;Views\Connexion.xaml;Views\Inscription.xaml;Views\InterfaceAdministrateur.xaml;Views\InterfaceCommercial.xaml;Views\ListeComptesClient.xaml;Views\ModificationClient.xaml;
 
-False
+True
 

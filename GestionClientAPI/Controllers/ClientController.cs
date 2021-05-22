@@ -77,21 +77,23 @@ namespace GestionClientAPI.Controllers
         }
 
 
-            [HttpPut("{client}")]
-            public IActionResult ModifierClient(Client clientFourni) {
+            [HttpPut("{ClientId}")]
+            public IActionResult ModifierClient(int ClientId, [FromBody] ClientModel model) {
 
+                Debug.WriteLine("Demande de modification pour le client à l'id " + ClientId);
                 try
                 {
 
-                    Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(clientFourni.UtilisateurId)).FirstOrDefault();
+                    Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(ClientId)).FirstOrDefault();
 
-                    client.Login = clientFourni.Login;
-                    client.Mail = clientFourni.Mail;
-                    client.Nom = clientFourni.Nom;
-                    client.Prenom = clientFourni.Prenom;
-                    client.Telephone = clientFourni.Telephone;
-                    client.Age = clientFourni.Age;
+                    client.Login = model.Login;
+                    client.Mail = model.Mail;
+                    client.Nom = model.Nom;
+                    client.Prenom = model.Prenom;
+                    client.Telephone = model.Telephone;
+                    client.Age = model.Age;
 
+                Debug.WriteLine("New Login : " + model.Login);
                     _context.SaveChanges();
                     return Ok();
                 }

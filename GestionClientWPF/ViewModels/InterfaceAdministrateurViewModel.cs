@@ -78,6 +78,11 @@ namespace GestionClientWPF.ViewModels
                 o => _router.GoToConnexion(_window)
             );
 
+            ModifierClient = new RelayCommand(
+                o => (SelectedClient != null),
+                o => _router.GoToModificationClient(_window, IdAdministrateur, Token, SelectedClient)
+            );
+
             SupprimerClient = new RelayCommand(
                 o => (SelectedClient != null),
                 o => RemoveClient()
