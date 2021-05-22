@@ -34,3 +34,14 @@ C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gesti
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\AjoutClient.baml
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ModificationClient.g.cs
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ModificationClient.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\AjoutGestionnaire.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\AjoutGestionnaire.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ModificationGestionnaire.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ModificationGestionnaire.baml

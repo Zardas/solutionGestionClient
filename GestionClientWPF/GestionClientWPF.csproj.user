@@ -10,6 +10,9 @@
     <Compile Update="Views\AjoutClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AjoutGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Connexion.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -28,9 +31,15 @@
     <Compile Update="Views\ModificationClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\ModificationGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\AjoutClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AjoutGestionnaire.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Connexion.xaml">
@@ -49,6 +58,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ModificationClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModificationGestionnaire.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

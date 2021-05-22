@@ -32,12 +32,31 @@ namespace GestionClientAPI
             var key = "Neptunus Favet Eunti";
 
             // Definie comment le mot clé [Authorize] est défini
+
+            services.AddAuthentication("Bearer")
+                .AddJwtBearer("Bearer", options =>
+                {
+                    options.Authority = "http://localhost:5000";
+                    options.RequireHttpsMetadata = false;
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+
+            services.AddSingleton<GestionClientAPI.Controllers.IJwtAuthentificationManager>(new GestionClientAPI.Controllers.JwtAuthentificationManager(key));
+
+
             /*services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
                {
+                   options.Authority = "https://localhost:5000";
                    options.RequireHttpsMetadata = false;
                    options.SaveToken = true;
                    options.TokenValidationParameters = new TokenValidationParameters
@@ -48,21 +67,9 @@ namespace GestionClientAPI
                        ValidateAudience = false
                    };
                });*/
-            services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options =>
-                {
-                    options.Authority = "https://localhost:5000";
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                        ValidateIssuer = false,
-                        ValidateAudience = true
-                    };
-                });
 
-            services.AddSingleton<GestionClientAPI.Controllers.IJwtAuthentificationManager>(new GestionClientAPI.Controllers.JwtAuthentificationManager(key));
+
+
 
 
             services.AddDbContext<Models.Shared.gestionAPI_DBContext>(option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

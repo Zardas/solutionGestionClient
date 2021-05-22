@@ -51,6 +51,8 @@ namespace GestionClientWPF.ViewModels
             _router = new Router();
 
             Clients = new ObservableCollection<Client>(_restApiQueries.GetClients("Client"));
+            Gestionnaires = new ObservableCollection<Gestionnaire>(_restApiQueries.GetGestionnaires("Gestionnaire"));
+
 
             Debug.WriteLine("Token flag b : " + Token);
 
@@ -70,7 +72,7 @@ namespace GestionClientWPF.ViewModels
 
             GoToAjoutGestionnaire = new RelayCommand(
                 o => true,
-                o => Debug.WriteLine("Demande ajout gestionnaire")
+                o => _router.GoToAjoutGestionnaire(_window, IdAdministrateur, Token)
             );
 
             GoToConnexion = new RelayCommand(
@@ -86,6 +88,16 @@ namespace GestionClientWPF.ViewModels
             SupprimerClient = new RelayCommand(
                 o => (SelectedClient != null),
                 o => RemoveClient()
+            );
+
+            ModifierGestionnaire = new RelayCommand(
+                o => (SelectedGestionnaire != null),
+                o => _router.GoToModificationGestionnaire(_window, IdAdministrateur, Token, SelectedGestionnaire)
+            );
+
+            SupprimerGestionnaire = new RelayCommand(
+                o => (SelectedGestionnaire != null),
+                o => RemoveGestionnaire()
             );
 
         }
@@ -115,6 +127,15 @@ namespace GestionClientWPF.ViewModels
                 Clients.Add(client);
             }
         }
+        public void SynchroniserGestionnaires()
+        {
+            Clients.Clear();
+
+            foreach (Gestionnaire gestionnaire in _restApiQueries.GetGestionnaires("Gestionnaire"))
+            {
+                Gestionnaires.Add(gestionnaire);
+            }
+        }
 
 
         public void RemoveClient()
@@ -122,11 +143,16 @@ namespace GestionClientWPF.ViewModels
             string path = "Client/" + SelectedClient.UtilisateurId;
             Debug.WriteLine("Path : " + path);
             _restApiQueries.Remove(path);
-            //_router.GoToInterfaceAdministrateur(_window, IdAdministrateur, Token);
             SynchroniserClients();
         }
 
-
+        public void RemoveGestionnaire()
+        {
+            string path = "Gestionnaire/" + SelectedGestionnaire.UtilisateurId;
+            Debug.WriteLine("Path : " + path);
+            _restApiQueries.Remove(path);
+            SynchroniserGestionnaires();
+        }
 
 
         /* definition of PropertyChanged */

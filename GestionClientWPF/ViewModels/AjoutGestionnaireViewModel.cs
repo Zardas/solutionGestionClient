@@ -8,9 +8,10 @@ using System.Windows;
 using System.Windows.Input;
 using GestionClientWPF.Models;
 
+
 namespace GestionClientWPF.ViewModels
 {
-    class AjoutClientViewModel : INotifyPropertyChanged
+    class AjoutGestionnaireViewModel : INotifyPropertyChanged
     {
         /* reference to the current window */
         private readonly Window _window;
@@ -29,34 +30,32 @@ namespace GestionClientWPF.ViewModels
         private string Token;
 
 
+        public ObservableCollection<Role> Roles { get; set; }
+
+        public string NouveauRole { get; set; }
 
 
-
-        /* Variables pour l'ajout du client */
+        /* Variables pour l'ajout du gestionnaire */
         public string LoginInscription { get; set; }
         public string MailInscription { get; set; }
         public string NomInscription { get; set; }
-        public string PrenomInscription { get; set; }
         public string MotDePasseInscription { get; set; }
-        public string TelephoneInscription { get; set; }
-        public string AgeInscription { get; set; }
-        public bool isValidAjoutClient()
+        public Role RoleInscription { get; set; }
+        public bool isValidAjoutGestionnaire()
         {
             return (!string.IsNullOrEmpty(LoginInscription) &&
                     !string.IsNullOrEmpty(MailInscription) &&
                     Utilitaires.IsValidEmail(MailInscription) &&
                     !string.IsNullOrEmpty(NomInscription) &&
-                    !string.IsNullOrEmpty(PrenomInscription) &&
                     !string.IsNullOrEmpty(MotDePasseInscription) &&
-                    !string.IsNullOrEmpty(TelephoneInscription) &&
-                    !string.IsNullOrEmpty(AgeInscription) &&
-                    Int32.Parse(AgeInscription) > 16 );
+                    !(RoleInscription == null)
+                   );
         }
 
 
 
         /* constructor and initialization */
-        public AjoutClientViewModel(Window window, int IdAdministrateur, string Token)
+        public AjoutGestionnaireViewModel(Window window, int IdAdministrateur, string Token)
         {
             _window = window;
 
@@ -68,6 +67,7 @@ namespace GestionClientWPF.ViewModels
             this.IdAdministrateur = IdAdministrateur;
             this.Token = Token;
 
+            Roles = new ObservableCollection<Role>(_restApiQueries.GetRoles("Role")); 
 
             GoToInterfaceAdministrateur = new RelayCommand(
                 o => true,
@@ -89,9 +89,14 @@ namespace GestionClientWPF.ViewModels
                 o => _router.GoToConnexion(_window)
             );
 
-            AjouterClient = new RelayCommand(
-                o => isValidAjoutClient(),
-                o => AjoutClient()
+            AjouterGestionnaire = new RelayCommand(
+                o => isValidAjoutGestionnaire(),
+                o => AjoutGestionnaire()
+            );
+
+            AjouterRoleCommand = new RelayCommand(
+                o => (!string.IsNullOrEmpty(NouveauRole)),
+                o => AjoutRole()
             );
 
         }
@@ -101,26 +106,49 @@ namespace GestionClientWPF.ViewModels
         public ICommand GoToAjoutClient { get; private set; }
         public ICommand GoToAjoutGestionnaire { get; private set; }
         public ICommand GoToConnexion { get; private set; }
-        public ICommand AjouterClient { get; private set; }
+        public ICommand AjouterGestionnaire { get; private set; }
+
+        public ICommand AjouterRoleCommand { get; private set; }
 
 
-
-        public void AjoutClient()
+        public void AjoutGestionnaire()
         {
-            Client client = new Client()
+            Gestionnaire gestionnaire = new Gestionnaire()
             {
                 Login = LoginInscription,
-                Mail = MailInscription,
-                Nom = NomInscription,
-                Prenom = PrenomInscription,
+                Email = MailInscription,
+                NomGestionnaire = NomInscription,
                 MotDePasse = MotDePasseInscription,
-                Telephone = TelephoneInscription,
-                Age = Int32.Parse(AgeInscription)
+                RoleId = RoleInscription.RoleId
             };
 
-            string path = "Client/";
-            _restApiQueries.AddClient(path, client);
+            string path = "Gestionnaire/";
+            _restApiQueries.AddGestionnaire(path, gestionnaire);
             _router.GoToInterfaceAdministrateur(_window, IdAdministrateur, Token);
+        }
+
+
+        public void AjoutRole()
+        {
+            Role role = new Role()
+            {
+                Title = NouveauRole
+            };
+
+            string path = "Role/";
+            _restApiQueries.AddRole(path, role);
+            SynchroniserRoles();
+            
+        }
+
+        public void SynchroniserRoles()
+        {
+            Roles.Clear();
+
+            foreach (Role role in _restApiQueries.GetRoles("Role"))
+            {
+                Roles.Add(role);
+            }
         }
 
 

@@ -46,6 +46,20 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+        public void GoToAjoutGestionnaire(Window window, int idAdministrateur, string Token)
+        {
+            Views.AjoutGestionnaire newWindow = new Views.AjoutGestionnaire(idAdministrateur, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToModificationGestionnaire(Window window, int idAdministrateur, string Token, Gestionnaire gestionnaire)
+        {
+            Views.ModificationGestionnaire newWindow = new Views.ModificationGestionnaire(idAdministrateur, Token, gestionnaire);
+            newWindow.Show();
+            window.Close();
+        }
+
         public void GoToInterfaceCommercial(Window window, int idCommercial, string Token)
         {
             Views.InterfaceCommercial newWindow = new Views.InterfaceCommercial(idCommercial, Token);

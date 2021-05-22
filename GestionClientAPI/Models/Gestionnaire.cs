@@ -27,6 +27,7 @@ namespace GestionClientAPI.Models
         {
             Gain = 0; // On initialise les gains à 0
             ClientsAssocies = new List<Client>();
+            LoginStatus = "offline";
         }
 
         // Gagne 15% du montant de la facture

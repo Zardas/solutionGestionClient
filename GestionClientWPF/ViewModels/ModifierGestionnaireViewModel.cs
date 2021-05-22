@@ -10,8 +10,9 @@ using GestionClientWPF.Models;
 
 namespace GestionClientWPF.ViewModels
 {
-    class ModifierClientViewModel : INotifyPropertyChanged
+    class ModifierGestionnaireViewModel : INotifyPropertyChanged
     {
+
         /* reference to the current window */
         private readonly Window _window;
 
@@ -29,32 +30,33 @@ namespace GestionClientWPF.ViewModels
         private string Token;
 
 
-        private Client client { get; set; }
+        private Gestionnaire Gestionnaire;
 
 
-        /* Variables pour l'ajout du client */
+        public ObservableCollection<Role> Roles { get; set; }
+
+        public string NouveauRole { get; set; }
+
+
+        /* Variables pour l'ajout du gestionnaire */
         public string LoginModification { get; set; }
         public string MailModification { get; set; }
         public string NomModification { get; set; }
-        public string PrenomModification { get; set; }
-        public string TelephoneModification { get; set; }
-        public string AgeModification { get; set; }
-        public bool isValidModificationClient()
+        public Role RoleModification { get; set; }
+        public bool isValidModificationGestionnaire()
         {
             return (!string.IsNullOrEmpty(LoginModification) &&
                     !string.IsNullOrEmpty(MailModification) &&
                     Utilitaires.IsValidEmail(MailModification) &&
                     !string.IsNullOrEmpty(NomModification) &&
-                    !string.IsNullOrEmpty(PrenomModification) &&
-                    !string.IsNullOrEmpty(TelephoneModification) &&
-                    !string.IsNullOrEmpty(AgeModification) &&
-                    Int32.Parse(AgeModification) > 16);
+                    !(RoleModification == null)
+                   );
         }
 
 
 
         /* constructor and initialization */
-        public ModifierClientViewModel(Window window, int IdAdministrateur, string Token, Client client)
+        public ModifierGestionnaireViewModel(Window window, int IdAdministrateur, string Token, Gestionnaire gestionnaire)
         {
             _window = window;
 
@@ -62,22 +64,18 @@ namespace GestionClientWPF.ViewModels
 
             _router = new Router();
 
-
             this.IdAdministrateur = IdAdministrateur;
             this.Token = Token;
 
-            Debug.WriteLine("FLAG C : " + client.UtilisateurId);
+            this.Gestionnaire = gestionnaire;
 
-            this.client = client;
-
-            LoginModification = client.Login;
-            MailModification = client.Mail;
-            NomModification = client.Nom;
-            PrenomModification = client.Prenom;
-            TelephoneModification = client.Telephone;
-            AgeModification = client.Age.ToString();
+            LoginModification = gestionnaire.Login;
+            MailModification = gestionnaire.Email;
+            NomModification = gestionnaire.NomGestionnaire;
+            RoleModification = gestionnaire.Role;
 
 
+            Roles = new ObservableCollection<Role>(_restApiQueries.GetRoles("Role"));
 
             GoToInterfaceAdministrateur = new RelayCommand(
                 o => true,
@@ -99,9 +97,14 @@ namespace GestionClientWPF.ViewModels
                 o => _router.GoToConnexion(_window)
             );
 
-            ModifierClient = new RelayCommand(
-                o => isValidModificationClient(),
-                o => ModificationClient()
+            ModifierGestionnaire = new RelayCommand(
+                o => isValidModificationGestionnaire(),
+                o => ModificationGestionnaire()
+            );
+
+            AjouterRoleCommand = new RelayCommand(
+                o => (!string.IsNullOrEmpty(NouveauRole)),
+                o => AjoutRole()
             );
 
         }
@@ -111,26 +114,48 @@ namespace GestionClientWPF.ViewModels
         public ICommand GoToAjoutClient { get; private set; }
         public ICommand GoToAjoutGestionnaire { get; private set; }
         public ICommand GoToConnexion { get; private set; }
-        public ICommand ModifierClient { get; private set; }
+        public ICommand ModifierGestionnaire { get; private set; }
+
+        public ICommand AjouterRoleCommand { get; private set; }
 
 
-
-        public void ModificationClient()
+        public void ModificationGestionnaire()
         {
-            Client clientModif = new Client()
+            Gestionnaire gestionnaire = new Gestionnaire()
             {
                 Login = LoginModification,
-                Mail = MailModification,
-                Nom = NomModification,
-                Prenom = PrenomModification,
-                Telephone = TelephoneModification,
-                Age = Int32.Parse(AgeModification)
+                Email = MailModification,
+                NomGestionnaire = NomModification,
+                RoleId = RoleModification.RoleId
             };
 
-            string path = "Client/" + this.client.UtilisateurId;
-            Debug.WriteLine("Path : " + path);
-            _restApiQueries.ModifierClient(path, clientModif);
+            string path = "Gestionnaire/" + this.Gestionnaire.UtilisateurId;
+            _restApiQueries.ModifierGestionnaire(path, gestionnaire);
             _router.GoToInterfaceAdministrateur(_window, IdAdministrateur, Token);
+        }
+
+
+        public void AjoutRole()
+        {
+            Role role = new Role()
+            {
+                Title = NouveauRole
+            };
+
+            string path = "Role/";
+            _restApiQueries.AddRole(path, role);
+            SynchroniserRoles();
+
+        }
+
+        public void SynchroniserRoles()
+        {
+            Roles.Clear();
+
+            foreach (Role role in _restApiQueries.GetRoles("Role"))
+            {
+                Roles.Add(role);
+            }
         }
 
 
@@ -142,5 +167,6 @@ namespace GestionClientWPF.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }
