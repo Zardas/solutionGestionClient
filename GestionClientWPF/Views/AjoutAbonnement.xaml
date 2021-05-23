@@ -5,8 +5,93 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionClientWPF.Views"
         mc:Ignorable="d"
-        Title="AjoutAbonnement" Height="450" Width="800">
+        Title="AjoutAbonnement" Height="450" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="102*"/>
+                    <ColumnDefinition Width="108*"/>
+                    <ColumnDefinition Width="107*"/>
+                    <ColumnDefinition Width="234*"/>
+                    <ColumnDefinition Width="351*"/>
+                    <ColumnDefinition Width="55*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Command="{Binding GoToInterfaceCommercial}" Cursor="Hand" HorizontalAlignment="Center" Width="67">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="+ Client" Command="{Binding GoToAssociationClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" Width="128"></MenuItem>
+                <MenuItem Header="+ Produit" Command="{Binding GoToAjoutProduit}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center" Width="134"></MenuItem>
+                <MenuItem Header="+ Service" Command="{Binding GoToAjoutService}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Center" Width="133"></MenuItem>
+                <MenuItem Header="+ Abonnement" Command="{Binding GoToAjoutAbonnement}"  Grid.Column="4" Cursor="Hand" HorizontalAlignment="Center" Width="234"></MenuItem>
+                <MenuItem Header="Liste des Tickets" Command="{Binding GoToListeTickets}"  Grid.Column="5" Cursor="Hand" HorizontalAlignment="Center" Width="350"></MenuItem>
+                <MenuItem Command="{Binding GoToConnexion}" Grid.Column="6" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFE43030" FontWeight="Bold" Height="42">
+                Ajout abonnement
+            </TextBlock>
+
+
+
+            <!-- Listes -->
+            <Grid Grid.Row="1" Margin="200,69,250,34" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="54*"/>
+                    <RowDefinition Height="233*" />
+                </Grid.RowDefinitions>
+
+                <!-- Ajout abonnements -->
+                <Grid Margin="25,0,25,2" Grid.Row="0" Grid.ColumnSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Durée en mois :" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="1" Text="{Binding dureeNouvelAbonnement, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA1F1F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+
+                    <Button Grid.Column="2" Content="Ajouter" Command="{Binding AjouterAbonnementCommand}" Foreground="#FFEA1F1F" BorderBrush="#FFEA1F1F" Height="28" Background="{x:Null}" Margin="15,0,15,0" />
+                </Grid>
+
+                <!-- Liste Abonnents -->
+                <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="ListeAbonnements" ItemsSource="{Binding Abonnements, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="35,15,30,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=DureeAbonnement, StringFormat=Abonnement de {0} mois}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+            </Grid>
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FFE43030" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="1024"  Grid.Row="1" />
     </Grid>
 </Window>

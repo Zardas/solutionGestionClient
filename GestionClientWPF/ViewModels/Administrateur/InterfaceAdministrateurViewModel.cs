@@ -54,11 +54,13 @@ namespace GestionClientWPF.ViewModels
             Gestionnaires = new ObservableCollection<Gestionnaire>(_restApiQueries.GetGestionnaires("Gestionnaire"));
 
 
-            Debug.WriteLine("Token flag b : " + Token);
+            
 
             this.IdAdministrateur = IdAdministrateur;
             this.Token = Token;
 
+            Administrateur administrateur = _restApiQueries.GetSpecificAdministrateur("Administrateur/" + IdAdministrateur);
+            LoginAdministrateur = administrateur.Login;
 
             GoToInterfaceAdministrateur = new RelayCommand(
                 o => true,

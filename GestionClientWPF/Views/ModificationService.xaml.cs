@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public ModificationService(int IdGestionnaire, string Token, Models.Service service)
         {
             InitializeComponent();
+            DataContext = new ViewModels.ModifierServiceViewModel(this, IdGestionnaire, Token, service);
         }
     }
 }

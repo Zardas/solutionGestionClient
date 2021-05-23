@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public AjoutAbonnement(int idCommercial, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.AjoutAbonnementViewModel(this, idCommercial, Token);
         }
     }
 }

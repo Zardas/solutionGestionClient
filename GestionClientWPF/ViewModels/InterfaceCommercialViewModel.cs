@@ -30,7 +30,7 @@ namespace GestionClientWPF.ViewModels
 
 
         public string LoginGestionnaire { get; set; }
-
+        public int Gain { get; set; }
 
         /* Liste des clients liés */
         public ObservableCollection<Client> ClientsLiés { get; set; }
@@ -56,9 +56,16 @@ namespace GestionClientWPF.ViewModels
 
             this.IdGestionnaire = IdGestionnaire;
 
-            // Initialisation des listes
             string path;
+            path = "Gestionnaire/" + IdGestionnaire;
+            Debug.WriteLine("Path Login : " + path);
+            Gestionnaire gestionnaire = _restApiQueries.GetSpecificGestionnaire("Gestionnaire/" + IdGestionnaire);
+            Debug.WriteLine("GestionnaireLogin : " + gestionnaire.Login);
+            LoginGestionnaire = gestionnaire.Login;
+            Gain = gestionnaire.Gain;
 
+
+            // Initialisation des listes
 
             // Liste des clients associés au gestionnaire
             path = "Client/GestionnaireAssocie/" + IdGestionnaire;
@@ -114,7 +121,7 @@ namespace GestionClientWPF.ViewModels
             /* Commandes d'action */
             RetirerClient = new RelayCommand(
                 o => (SelectedClient != null),
-                o => Debug.WriteLine("TODO")
+                o => DesassociationClient()
             );
 
             ModifierProduit = new RelayCommand(
@@ -192,7 +199,12 @@ namespace GestionClientWPF.ViewModels
 
 
 
-
+        public void DesassociationClient()
+        {
+            string path = "Client/ModifierGestionnaireAssocie/" + SelectedClient.UtilisateurId;
+            _restApiQueries.ModifierClienGestionnaire(path, 0);
+            SynchroniserClients();
+        }
 
         public void RetirerUnProduit()
         {

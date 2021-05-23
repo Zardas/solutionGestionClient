@@ -38,6 +38,21 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
         }
 
+        // Get a specific gestionnaire
+        [HttpGet("{GestionnaireId}")]
+        public IActionResult GetGestionnaire(int GestionnaireId)
+        {
+            try
+            {
+                Gestionnaire gestionnaire = _context.Gestionnaires.Where(g => g.UtilisateurId.Equals(GestionnaireId)).FirstOrDefault();
+
+                return Ok(gestionnaire);
+            }
+            catch (Exception) { }
+
+            return BadRequest(); // Error code 400
+        }
+
         [HttpPost]
         public IActionResult AddGestionnaire([FromBody] GestionnaireModel model)
         {

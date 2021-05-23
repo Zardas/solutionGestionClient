@@ -107,6 +107,7 @@ namespace GestionClientWPF.ViewModels
         {
             Views.ModificationService newWindow = new Views.ModificationService(idCommercial, Token, service);
             newWindow.Show();
+            window.Close();
         }
 
         public void GoToAjoutAbonnement(Window window, int idCommercial, string Token)

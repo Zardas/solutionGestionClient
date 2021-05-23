@@ -35,6 +35,20 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
 
         }
+        // Get a specific administrateur
+        [HttpGet("{AdministrateurId}")]
+        public IActionResult GetGestionnaire(int AdministrateurId)
+        {
+            try
+            {
+                Administrateur administrateur = _context.Administrateurs.Where(g => g.UtilisateurId.Equals(AdministrateurId)).FirstOrDefault();
+
+                return Ok(administrateur);
+            }
+            catch (Exception) { }
+
+            return BadRequest(); // Error code 400
+        }
 
     }
 }

@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public AssociationClient(int idCommercial, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.AjoutClientAssocieViewModel(this, idCommercial, Token);
         }
     }
 }

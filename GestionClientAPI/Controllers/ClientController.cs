@@ -39,6 +39,7 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
         }
 
+
         /* Clients associés à un gestionnaire */
         [HttpGet("GestionnaireAssocie/{GestionnaireId}")]
         public IActionResult GetClients_GestionnaireAssocie(int GestionnaireId)
@@ -49,6 +50,20 @@ namespace GestionClientAPI.Controllers
 
                 return Ok(clients);
             } catch(Exception) { }
+
+            return BadRequest();
+        }
+        /* Clients non associés à un gestionnaire */
+        [HttpGet("GestionnaireNonAssocie")]
+        public IActionResult GetClients_GestionnaireNonAssocie(int GestionnaireId)
+        {
+            try
+            {
+                List<Client> clients = _context.Clients.Where(c => (!c.GestionnaireAssocieId.Equals(0))).ToList();
+
+                return Ok(clients);
+            }
+            catch (Exception) { }
 
             return BadRequest();
         }
@@ -117,7 +132,28 @@ namespace GestionClientAPI.Controllers
                 return BadRequest();
             }
 
-            [HttpDelete("{ClientId}")]
+        [HttpPut("ModifierGestionnaireAssocie/{ClientId}")]
+        public IActionResult ModifierClient_gestionnaireAssocie(int ClientId, [FromBody] int GestionnaireId)
+        {
+
+            try
+            {
+
+                Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(ClientId)).FirstOrDefault();
+
+
+                client.GestionnaireAssocieId = GestionnaireId;
+
+                _context.SaveChanges();
+                return Ok();
+            }
+            catch (Exception) { }
+
+            return BadRequest();
+        }
+
+
+        [HttpDelete("{ClientId}")]
             public IActionResult RemoveClient(int ClientId)
             {
                 try

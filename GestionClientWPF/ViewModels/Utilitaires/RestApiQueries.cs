@@ -109,6 +109,19 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Service>();
         }
+        private async Task<List<Abonnement>> GetAbonnementAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Abonnement> abonnements = JsonConvert.DeserializeObject<List<Abonnement>>(data);
+                return abonnements;
+            }
+
+            return new List<Abonnement>();
+        }
 
 
 
@@ -164,14 +177,47 @@ namespace GestionClientWPF.ViewModels
 
             return response.IsSuccessStatusCode;
         }
+        private async Task<bool> ModifierClientGestionnaireAsync(string path, int IdGestionnaire)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(IdGestionnaire), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
 
 
-        
 
 
+        /* Administrateur */
+        private async Task<Administrateur> GetSpecificAdministrateurAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Administrateur administrateur = JsonConvert.DeserializeObject<Administrateur>(data);
+                return administrateur;
+            }
+
+            return new Administrateur();
+        }
 
         /* Gestionnaire */
+        private async Task<Gestionnaire> GetSpecificGestionnaireAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
 
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Gestionnaire gestionnaire = JsonConvert.DeserializeObject<Gestionnaire>(data);
+                return gestionnaire;
+            }
+
+            return new Gestionnaire();
+        }
         private async Task<bool> AddGestionnaireAsync(string path, Gestionnaire gestionnaire)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(gestionnaire), Encoding.UTF8, "application/json");
@@ -229,6 +275,10 @@ namespace GestionClientWPF.ViewModels
 
             return response.IsSuccessStatusCode;
         }
+        // Utiliser pour modifier le gestionnaira ssocié du client
+
+
+
 
         /* Service */
         private async Task<bool> AddServiceAsync(string path, Service service)
@@ -245,6 +295,16 @@ namespace GestionClientWPF.ViewModels
             StringContent content = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        /* Abonnement */
+        private async Task<bool> AddAbonnementAsync(string path, Abonnement abonnement)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(abonnement), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(path, content);
 
             return response.IsSuccessStatusCode;
         }
@@ -362,7 +422,20 @@ namespace GestionClientWPF.ViewModels
 
             return services;
         }
+        public List<Abonnement> GetAbonnements(string path)
+        {
+            List<Abonnement> abonnements = new List<Abonnement>();
 
+            try
+            {
+                Task<List<Abonnement>> task = Task.Run(async () => await GetAbonnementAsync(path));
+                task.Wait();
+                abonnements = task.Result;
+            }
+            catch (Exception) { }
+
+            return abonnements;
+        }
 
 
 
@@ -387,6 +460,23 @@ namespace GestionClientWPF.ViewModels
 
 
 
+        /* Administrateur */
+        public Administrateur GetSpecificAdministrateur(string path)
+        {
+            Administrateur administrateur = new Administrateur();
+
+            try
+            {
+                Task<Administrateur> task = Task.Run(async () => await GetSpecificAdministrateurAsync(path));
+                task.Wait();
+                administrateur = task.Result;
+            }
+            catch (Exception) { }
+
+            return administrateur;
+        }
+
+
 
         /* Client */
 
@@ -400,8 +490,6 @@ namespace GestionClientWPF.ViewModels
             catch (Exception) { }
 
         }
-
-        // Modification d'un client
         public void ModifierClient(string path, Client client)
         {
             try
@@ -412,10 +500,33 @@ namespace GestionClientWPF.ViewModels
             catch (Exception) { }
 
         }
+        public void ModifierClienGestionnaire(string path, int gestionnaireId)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierClientGestionnaireAsync(path, gestionnaireId));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
 
 
         /* Gestionnaire */
+        public Gestionnaire GetSpecificGestionnaire(string path)
+        {
+            Gestionnaire gestionnaire = new Gestionnaire();
 
+            try
+            {
+                Task<Gestionnaire> task = Task.Run(async () => await GetSpecificGestionnaireAsync(path));
+                task.Wait();
+                gestionnaire = task.Result;
+            }
+            catch (Exception) { }
+
+            return gestionnaire;
+        }
         public void AddGestionnaire(string path, Gestionnaire gestionnaire)
         {
             try
@@ -426,8 +537,6 @@ namespace GestionClientWPF.ViewModels
             catch (Exception) { }
 
         }
-
-        // Modification d'un cligestionnaireent
         public void ModifierGestionnaire(string path, Gestionnaire gestionnaire)
         {
             try
@@ -512,6 +621,20 @@ namespace GestionClientWPF.ViewModels
             catch (Exception) { }
 
         }
+
+
+        /* Abonnement */
+        public void AddAbonnement(string path, Abonnement abonnement)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await AddAbonnementAsync(path, abonnement));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+
 
 
 

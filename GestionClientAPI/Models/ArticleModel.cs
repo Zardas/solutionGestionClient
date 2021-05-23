@@ -13,5 +13,6 @@ namespace GestionClientAPI.Models
         public String Image { get; set; }
         public String Type { get; set; }
         public String Manuel { get; set; }
+        public int AbonnementId { get; set; }
     }
 }
