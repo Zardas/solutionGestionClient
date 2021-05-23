@@ -129,7 +129,7 @@ namespace GestionClientWPF.ViewModels
         }
         public void SynchroniserGestionnaires()
         {
-            Clients.Clear();
+            Gestionnaires.Clear();
 
             foreach (Gestionnaire gestionnaire in _restApiQueries.GetGestionnaires("Gestionnaire"))
             {

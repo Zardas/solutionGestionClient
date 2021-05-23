@@ -25,6 +25,11 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+
+        /* ------------------------------------------------------------------ */
+        /*                           Administrateur                           */
+        /* ------------------------------------------------------------------ */
+
         public void GoToInterfaceAdministrateur(Window window, int idAdministrateur, string Token)
         {
             Views.InterfaceAdministrateur newWindow = new Views.InterfaceAdministrateur(idAdministrateur, Token);
@@ -60,6 +65,16 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+        
+
+        
+
+
+
+
+        /* ------------------------------------------------------------------ */
+        /*                             Commercial                             */
+        /* ------------------------------------------------------------------ */
         public void GoToInterfaceCommercial(Window window, int idCommercial, string Token)
         {
             Views.InterfaceCommercial newWindow = new Views.InterfaceCommercial(idCommercial, Token);
@@ -67,11 +82,64 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+        public void GoToAjoutProduit(Window window, int idCommercial, string Token)
+        {
+            Views.AjoutProduit newWindow = new Views.AjoutProduit(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToModificationProduit(Window window, int idCommercial, string Token, Produit produit)
+        {
+            Views.ModificationProduit newWindow = new Views.ModificationProduit(idCommercial, Token, produit);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToAjoutService(Window window, int idCommercial, string Token)
+        {
+            Views.AjoutService newWindow = new Views.AjoutService(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToModificationService(Window window, int idCommercial, string Token, Service service)
+        {
+            Views.ModificationService newWindow = new Views.ModificationService(idCommercial, Token, service);
+            newWindow.Show();
+        }
+
+        public void GoToAjoutAbonnement(Window window, int idCommercial, string Token)
+        {
+            Views.AjoutAbonnement newWindow = new Views.AjoutAbonnement(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToListeTicketsGestionnaire(Window window, int idCommercial, string Token)
+        {
+            Views.ListeTicketsGestionnaire newWindow = new Views.ListeTicketsGestionnaire(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToAssociationClient(Window window, int idCommercial, string Token)
+        {
+            Views.AssociationClient newWindow = new Views.AssociationClient(idCommercial, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+
+        /* ------------------------------------------------------------------ */
+        /*                               Client                               */
+        /* ------------------------------------------------------------------ */
         public void GoToListeCompteClient(Window window, int idClient, string Token)
         {
             Views.ListeComptesClient newWindow = new Views.ListeComptesClient(idClient, Token);
             newWindow.Show();
             window.Close();
         }
+
     }
 }

@@ -83,6 +83,37 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Role>();
         }
+        private async Task<List<Produit>> GetProduitAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Produit> produits = JsonConvert.DeserializeObject<List<Produit>>(data);
+                return produits;
+            }
+
+            return new List<Produit>();
+        }
+        private async Task<List<Service>> GetServiceAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Service> services = JsonConvert.DeserializeObject<List<Service>>(data);
+                return services;
+            }
+
+            return new List<Service>();
+        }
+
+
+
+
+
 
 
 
@@ -117,6 +148,7 @@ namespace GestionClientWPF.ViewModels
 
         private async Task<bool> AddClientAsync(string path, Client client)
         {
+
             StringContent content = new StringContent(JsonConvert.SerializeObject(client), Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await _client.PostAsync(path, content);
@@ -173,7 +205,49 @@ namespace GestionClientWPF.ViewModels
 
 
 
+        /* Produit */
+        private async Task<bool> AddProduitAsync(string path, Produit produit)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(produit), Encoding.UTF8, "application/json");
 
+            HttpResponseMessage response = await _client.PostAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+        private async Task<bool> ModifierProduitAsync(string path, Produit produit)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(produit), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+        // Utilisé pour retirer 1 à la quantité du produit passé dans l'url
+        private async Task<bool> RetirerUnProduitAsync(string path)
+        {
+            HttpResponseMessage response = await _client.DeleteAsync(path);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        /* Service */
+        private async Task<bool> AddServiceAsync(string path, Service service)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+        private async Task<bool> ModifierServiceAsync(string path, Service service)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(service), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
 
 
 
@@ -248,18 +322,47 @@ namespace GestionClientWPF.ViewModels
         }
         public List<Role> GetRoles(string path)
         {
-            List<Role> role = new List<Role>();
+            List<Role> roles = new List<Role>();
 
             try
             {
                 Task<List<Role>> task = Task.Run(async () => await GetRolesAsync(path));
                 task.Wait();
-                role = task.Result;
+                roles = task.Result;
             }
             catch (Exception) { }
 
-            return role;
+            return roles;
         }
+        public List<Produit> GetProduit(string path)
+        {
+            List<Produit> produits = new List<Produit>();
+
+            try
+            {
+                Task<List<Produit>> task = Task.Run(async () => await GetProduitAsync(path));
+                task.Wait();
+                produits = task.Result;
+            }
+            catch (Exception) { }
+
+            return produits;
+        }
+        public List<Service> GetService(string path)
+        {
+            List<Service> services = new List<Service>();
+
+            try
+            {
+                Task<List<Service>> task = Task.Run(async () => await GetServiceAsync(path));
+                task.Wait();
+                services = task.Result;
+            }
+            catch (Exception) { }
+
+            return services;
+        }
+
 
 
 
@@ -354,10 +457,71 @@ namespace GestionClientWPF.ViewModels
 
 
 
+        /* Produit */
+        public void AddProduit(string path, Produit produit)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await AddProduitAsync(path, produit));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+        public void ModifierProduit(string path, Produit produit)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierProduitAsync(path, produit));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+        public void RetirerUnProduit(string path)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await RetirerUnProduitAsync(path));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
 
 
 
-        // Suppression d'un élément
+        /* Service */
+        public void AddService(string path, Service service)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await AddServiceAsync(path, service));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+        public void ModifierService(string path, Service service)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierServiceAsync(path, service));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+
+
+
+
+
+
+
+
+
+        // Suppression d'un élément (n'importe lequel)
         public void Remove(string path)
         {
             try

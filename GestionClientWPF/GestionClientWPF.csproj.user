@@ -7,10 +7,22 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\AjoutClient.xaml.cs">
+    <Compile Update="Views\Administrateur\AjoutClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\AjoutGestionnaire.xaml.cs">
+    <Compile Update="Views\Administrateur\AjoutGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AjoutAbonnement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AjoutProduit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AjoutService.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AssociationClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Connexion.xaml.cs">
@@ -19,27 +31,48 @@
     <Compile Update="Views\Inscription.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\InterfaceAdministrateur.xaml.cs">
+    <Compile Update="Views\Administrateur\InterfaceAdministrateur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\InterfaceCommercial.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ListeComptesClient.xaml.cs">
+    <Compile Update="Views\Administrateur\ListeComptesClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ModificationClient.xaml.cs">
+    <Compile Update="Views\Administrateur\ModificationClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ModificationGestionnaire.xaml.cs">
+    <Compile Update="Views\Administrateur\ModificationGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ListeTicketsGestionnaire.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ModificationProduit.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ModificationService.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\AjoutClient.xaml">
+    <Page Update="Views\Administrateur\AjoutClient.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\AjoutGestionnaire.xaml">
+    <Page Update="Views\Administrateur\AjoutGestionnaire.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AjoutAbonnement.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AjoutProduit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AjoutService.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AssociationClient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Connexion.xaml">
@@ -48,19 +81,28 @@
     <Page Update="Views\Inscription.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\InterfaceAdministrateur.xaml">
+    <Page Update="Views\Administrateur\InterfaceAdministrateur.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\InterfaceCommercial.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ListeComptesClient.xaml">
+    <Page Update="Views\Administrateur\ListeComptesClient.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ModificationClient.xaml">
+    <Page Update="Views\Administrateur\ModificationClient.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ModificationGestionnaire.xaml">
+    <Page Update="Views\Administrateur\ModificationGestionnaire.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ListeTicketsGestionnaire.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModificationProduit.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModificationService.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -39,6 +39,21 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
         }
 
+        /* Clients associés à un gestionnaire */
+        [HttpGet("GestionnaireAssocie/{GestionnaireId}")]
+        public IActionResult GetClients_GestionnaireAssocie(int GestionnaireId)
+        {
+            try
+            {
+                List<Client> clients = _context.Clients.Where(c => c.GestionnaireAssocieId.Equals(GestionnaireId)).ToList();
+
+                return Ok(clients);
+            } catch(Exception) { }
+
+            return BadRequest();
+        }
+
+
         [HttpPost]
         public IActionResult AddClient([FromBody] ClientModel model) // Passer en [FromBody] si ça ne marche pas
         {

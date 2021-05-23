@@ -1,0 +1,174 @@
+﻿<Window x:Class="GestionClientWPF.Views.AjoutProduit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionClientWPF.Views"
+        mc:Ignorable="d"
+        Title="AjoutProduit" Height="450" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23*"/>
+                <RowDefinition Height="46*"/>
+                <RowDefinition Height="286*"/>
+                <RowDefinition Height="75*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="102*"/>
+                    <ColumnDefinition Width="108*"/>
+                    <ColumnDefinition Width="107*"/>
+                    <ColumnDefinition Width="234*"/>
+                    <ColumnDefinition Width="351*"/>
+                    <ColumnDefinition Width="55*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Command="{Binding GoToInterfaceCommercial}" Cursor="Hand" HorizontalAlignment="Center" Width="67">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="+ Client" Command="{Binding GoToAssociationClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" Width="128"></MenuItem>
+                <MenuItem Header="+ Produit" Command="{Binding GoToAjoutProduit}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center" Width="134"></MenuItem>
+                <MenuItem Header="+ Service" Command="{Binding GoToAjoutService}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Center" Width="133"></MenuItem>
+                <MenuItem Header="+ Abonnement" Command="{Binding GoToAjoutAbonnement}"  Grid.Column="4" Cursor="Hand" HorizontalAlignment="Center" Width="234"></MenuItem>
+                <MenuItem Header="Liste des Tickets" Command="{Binding GoToListeTickets}"  Grid.Column="5" Cursor="Hand" HorizontalAlignment="Center" Width="350"></MenuItem>
+                <MenuItem Command="{Binding GoToConnexion}" Grid.Column="6" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFE43030" FontWeight="Bold" Height="42" Width="224">
+                Ajout produit
+            </TextBlock>
+
+
+
+
+            <!-- Formulaire -->
+            <ScrollViewer Grid.Row="1" Margin="0,40,0,0" Grid.RowSpan="2">
+                <StackPanel Margin="0,2,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible" CanVerticallyScroll="True" >
+
+                    <!-- Ligne 1 -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="177*"/>
+                            <ColumnDefinition Width="405*"/>
+                            <ColumnDefinition Width="218*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Image -->
+                        <Grid Grid.Column="0" Margin="15,0,15,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Image du produit :" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26"/>
+                            <TextBox Grid.Row="1" Height="20" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding ImageProduit, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+                        </Grid>
+
+                        <!-- Nom et Type -->
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <!-- Nom -->
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="139*"/>
+                                    <ColumnDefinition Width="266*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Nom du produit :" HorizontalAlignment="Left"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26" Width="108"/>
+                                <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding NomProduit, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                            <!-- Type -->
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="139*"/>
+                                    <ColumnDefinition Width="266*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Content="Type de produit :" HorizontalAlignment="Left"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26" Width="108"/>
+                                <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding TypeProduit, UpdateSourceTrigger=PropertyChanged}" />
+                            </Grid>
+                        </Grid>
+
+                        <!-- Prix -->
+                        <Grid Grid.Column="2" Margin="15,0,15,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="Prix du produit :" HorizontalAlignment="Center"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26"/>
+                            <TextBox Grid.Row="1" Height="20" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding PrixProduit, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+                        </Grid>
+                    </Grid>
+
+
+                    <!-- Ligne 2 : Fabricant / Quantite / Capacite -->
+                    <Grid Margin="0,15,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!-- Fabricant -->
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Fabricant du produit :" HorizontalAlignment="Right"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Height="26" />
+                            <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding FabricantProduit, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                        <!-- Quantite -->
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Quantite :" HorizontalAlignment="Right"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Height="26" />
+                            <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding QuantiteProduit, UpdateSourceTrigger=PropertyChanged}" />
+                        </Grid>
+                        <!-- Capacite -->
+                        <Grid Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0" Content="Capacité :" HorizontalAlignment="Right"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Height="26" />
+                            <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding CapaciteProduit, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,84,0" />
+                        </Grid>
+
+                    </Grid>
+
+                    <!-- Ligne 3 : description -->
+                    <StackPanel>
+                        <Label Content="Description du produit :" HorizontalAlignment="Left"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26"/>
+                        <TextBox Height="96" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding DescriptionProduit, UpdateSourceTrigger=PropertyChanged}" Width="742" />
+                    </StackPanel>
+
+
+                    <!-- Ligne 4 : manuel -->
+                    <StackPanel>
+                        <Label Content="Manuel du produit :" HorizontalAlignment="Left"  VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Grid.ColumnSpan="2" Height="26"/>
+                        <TextBox Height="66" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FFE43030" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="{Binding ManuelProduit, UpdateSourceTrigger=PropertyChanged}" Width="742" />
+                    </StackPanel>
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button Grid.Row="3" Content="Ajouter ce produit" Command="{Binding AjouterProduitCommand}" VerticalAlignment="Center" Foreground="#FFE43030" BorderBrush="#FFE43030" Background="{x:Null}" Height="30" />
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FFE43030" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="1024"  Grid.Row="1" />
+    </Grid>
+</Window>

@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public InterfaceCommercial(int idCommercial, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.InterfaceCommercialViewModel(this, idCommercial, Token);
         }
     }
 }
