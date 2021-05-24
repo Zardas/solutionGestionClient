@@ -64,6 +64,9 @@
     <Compile Update="Views\ListeTicketsClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\OuvertureTicketSupport.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\SoldeClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -124,6 +127,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\ListeTicketsClient.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\OuvertureTicketSupport.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\SoldeClient.xaml">

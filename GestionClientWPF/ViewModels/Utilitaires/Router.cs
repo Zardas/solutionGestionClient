@@ -170,5 +170,12 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+        public void GoToOuvertureTicketSupport(Window window, int idCompte, string Token, int idArticle)
+        {
+            Views.OuvertureTicketSupport newWindow = new Views.OuvertureTicketSupport(idCompte, Token, idArticle);
+            newWindow.Show();
+            window.Close();
+        }
+
     }
 }

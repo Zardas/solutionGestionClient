@@ -92,13 +92,13 @@ namespace GestionClientWPF.ViewModels
                 o => true,
                 o => _router.GoToSoldeClient(_window, IdCompte, Token)
             );
-
-            /* Action */
+            
             GoToConnexion = new RelayCommand(
                 o => true,
                 o => _router.GoToConnexion(_window)
             );
 
+            /* Action */
             RechercheCommand = new RelayCommand(
                 o => !string.IsNullOrEmpty(StringRecherchee),
                 o => Recherche(StringRecherchee)
@@ -106,7 +106,7 @@ namespace GestionClientWPF.ViewModels
 
             OuvrirTicket = new RelayCommand(
                 o => (SelectedArticlePanier != null),
-                o => Debug.WriteLine("TODO")
+                o => _router.GoToOuvertureTicketSupport(_window, IdCompte, Token, SelectedArticlePanier.ArticleId)
             );
 
             RetirerArticle = new RelayCommand(

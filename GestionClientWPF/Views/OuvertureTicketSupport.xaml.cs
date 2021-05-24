@@ -13,14 +13,14 @@ using System.Windows.Shapes;
 namespace GestionClientWPF.Views
 {
     /// <summary>
-    /// Interaction logic for ListeFactures.xaml
+    /// Interaction logic for OuvertureTicketSupport.xaml
     /// </summary>
-    public partial class ListeFactures : Window
+    public partial class OuvertureTicketSupport : Window
     {
-        public ListeFactures(int IdCompte, string Token)
+        public OuvertureTicketSupport(int IdCompte, string Token, int IdArticle)
         {
             InitializeComponent();
-            DataContext = new ViewModels.ListeFacturesViewModel(this, IdCompte, Token);
+            DataContext = new ViewModels.OuvertureTicketSupportViewModel(this, IdCompte, Token, IdArticle);
         }
     }
 }

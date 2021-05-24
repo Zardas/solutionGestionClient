@@ -35,13 +35,13 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
         }
 
-        // Facture d'un compte
+        // Factures d'un compte
         [HttpGet("{CompteId}")]
         public IActionResult GetFactures(int CompteId)
         {
             try
             {
-                Facture factures = _context.Factures.Where(f => f.CompteId.Equals(CompteId)).FirstOrDefault();
+                List<Facture> factures = _context.Factures.Where(f => f.CompteId.Equals(CompteId)).ToList();
 
                 return Ok(factures);
             }

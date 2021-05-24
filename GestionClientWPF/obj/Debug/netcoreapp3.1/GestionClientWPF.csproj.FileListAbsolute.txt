@@ -67,3 +67,5 @@ C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gesti
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ListeFactures.baml
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\ListeTicketsClient.baml
 C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\SoldeClient.baml
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\OuvertureTicketSupport.g.cs
+C:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\obj\Debug\netcoreapp3.1\Views\OuvertureTicketSupport.baml
