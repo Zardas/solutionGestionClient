@@ -83,7 +83,7 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Role>();
         }
-        private async Task<List<Produit>> GetProduitAsync(string path)
+        private async Task<List<Produit>> GetProduitsAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
@@ -96,7 +96,7 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Produit>();
         }
-        private async Task<List<Service>> GetServiceAsync(string path)
+        private async Task<List<Service>> GetServicesAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
@@ -109,7 +109,20 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Service>();
         }
-        private async Task<List<Abonnement>> GetAbonnementAsync(string path)
+        private async Task<List<Article>> GetArticlesAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Article> articles = JsonConvert.DeserializeObject<List<Article>>(data);
+                return articles;
+            }
+
+            return new List<Article>();
+        }
+        private async Task<List<Abonnement>> GetAbonnementsAsync(string path)
         {
             HttpResponseMessage response = await _client.GetAsync(path);
 
@@ -122,8 +135,32 @@ namespace GestionClientWPF.ViewModels
 
             return new List<Abonnement>();
         }
+        private async Task<List<Panier>> GetPaniersAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
 
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Panier> paniers = JsonConvert.DeserializeObject<List<Panier>>(data);
+                return paniers;
+            }
 
+            return new List<Panier>();
+        }
+        private async Task<List<Facture>> GetFacturesAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Facture> factures = JsonConvert.DeserializeObject<List<Facture>>(data);
+                return factures;
+            }
+
+            return new List<Facture>();
+        }
 
 
 
@@ -158,7 +195,32 @@ namespace GestionClientWPF.ViewModels
 
 
         /* Client */
+        private async Task<Client> GetSpecificClientAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
 
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Client client = JsonConvert.DeserializeObject<Client>(data);
+                return client;
+            }
+
+            return new Client();
+        }
+        private async Task<int> GetClientSoldeAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                int solde = JsonConvert.DeserializeObject<int>(data);
+                return solde;
+            }
+
+            return 0;
+        }
         private async Task<bool> AddClientAsync(string path, Client client)
         {
 
@@ -172,6 +234,14 @@ namespace GestionClientWPF.ViewModels
         private async Task<bool> ModifierClientAsync(string path, Client client)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(client), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+        private async Task<bool> ModifierClientSoldeAsync(string path, int montant)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(montant), Encoding.UTF8, "application/json");
 
             HttpResponseMessage response = await _client.PutAsync(path, content);
 
@@ -249,7 +319,15 @@ namespace GestionClientWPF.ViewModels
             return response.IsSuccessStatusCode;
         }
 
+        /* Articles */
+        private async Task<bool> ModifierArticleAsync(string path, int PanierId)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(PanierId), Encoding.UTF8, "application/json");
 
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
 
         /* Produit */
         private async Task<bool> AddProduitAsync(string path, Produit produit)
@@ -275,7 +353,7 @@ namespace GestionClientWPF.ViewModels
 
             return response.IsSuccessStatusCode;
         }
-        // Utiliser pour modifier le gestionnaira ssocié du client
+
 
 
 
@@ -313,11 +391,92 @@ namespace GestionClientWPF.ViewModels
 
 
 
+        /* Compte */
+        private async Task<Compte> GetSpecificComptesAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Compte compte = JsonConvert.DeserializeObject<Compte>(data);
+                return compte;
+            }
+
+            return new Compte();
+        }
+        private async Task<List<Compte>> GetComptesAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                List<Compte> comptes = JsonConvert.DeserializeObject<List<Compte>>(data);
+                return comptes;
+            }
+
+            return new List<Compte>();
+        }
+        private async Task<bool> AddCompteAsync(string path, Compte compte)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(compte), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+        private async Task<bool> ModifierCompteAsync(string path, Compte compte)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(compte), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PutAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
+
+
+        /* Panier */
+        private async Task<Panier> GetSpecificPanierAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Panier panier = JsonConvert.DeserializeObject<Panier>(data);
+                return panier;
+            }
+
+            return new Panier();
+        }
 
 
 
 
 
+        /* Facture */
+        private async Task<Facture> GetSpecificFactureAsync(string path)
+        {
+            HttpResponseMessage response = await _client.GetAsync(path);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                Facture facture = JsonConvert.DeserializeObject<Facture>(data);
+                return facture;
+            }
+
+            return new Facture();
+        }
+        private async Task<bool> GenererFactureAsync(string path, int CompteId)
+        {
+            StringContent content = new StringContent(JsonConvert.SerializeObject(CompteId), Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await _client.PostAsync(path, content);
+
+            return response.IsSuccessStatusCode;
+        }
 
 
 
@@ -394,13 +553,27 @@ namespace GestionClientWPF.ViewModels
 
             return roles;
         }
+        public List<Article> GetArticle(string path)
+        {
+            List<Article> articles = new List<Article>();
+
+            try
+            {
+                Task<List<Article>> task = Task.Run(async () => await GetArticlesAsync(path));
+                task.Wait();
+                articles = task.Result;
+            }
+            catch (Exception) { }
+
+            return articles;
+        }
         public List<Produit> GetProduit(string path)
         {
             List<Produit> produits = new List<Produit>();
 
             try
             {
-                Task<List<Produit>> task = Task.Run(async () => await GetProduitAsync(path));
+                Task<List<Produit>> task = Task.Run(async () => await GetProduitsAsync(path));
                 task.Wait();
                 produits = task.Result;
             }
@@ -414,7 +587,7 @@ namespace GestionClientWPF.ViewModels
 
             try
             {
-                Task<List<Service>> task = Task.Run(async () => await GetServiceAsync(path));
+                Task<List<Service>> task = Task.Run(async () => await GetServicesAsync(path));
                 task.Wait();
                 services = task.Result;
             }
@@ -428,7 +601,7 @@ namespace GestionClientWPF.ViewModels
 
             try
             {
-                Task<List<Abonnement>> task = Task.Run(async () => await GetAbonnementAsync(path));
+                Task<List<Abonnement>> task = Task.Run(async () => await GetAbonnementsAsync(path));
                 task.Wait();
                 abonnements = task.Result;
             }
@@ -436,6 +609,39 @@ namespace GestionClientWPF.ViewModels
 
             return abonnements;
         }
+        public List<Panier> GetPaniers(string path)
+        {
+            List<Panier> paniers = new List<Panier>();
+
+            try
+            {
+                Task<List<Panier>> task = Task.Run(async () => await GetPaniersAsync(path));
+                task.Wait();
+                paniers = task.Result;
+            }
+            catch (Exception) { }
+
+            return paniers;
+        }
+        public List<Facture> GetFactures(string path)
+        {
+            List<Facture> factures = new List<Facture>();
+
+            try
+            {
+                Task<List<Facture>> task = Task.Run(async () => await GetFacturesAsync(path));
+                task.Wait();
+                factures = task.Result;
+            }
+            catch (Exception) { }
+
+            return factures;
+        }
+
+
+
+
+
 
 
 
@@ -479,7 +685,34 @@ namespace GestionClientWPF.ViewModels
 
 
         /* Client */
+        public Client GetSpecificClient(string path)
+        {
+            Client client = new Client();
 
+            try
+            {
+                Task<Client> task = Task.Run(async () => await GetSpecificClientAsync(path));
+                task.Wait();
+                client = task.Result;
+            }
+            catch (Exception) { }
+
+            return client;
+        }
+        public int GetClientSolde(string path)
+        {
+            int Solde = 0;
+
+            try
+            {
+                Task<int> task = Task.Run(async () => await GetClientSoldeAsync(path));
+                task.Wait();
+                Solde = task.Result;
+            }
+            catch (Exception) { }
+
+            return Solde;
+        }
         public void AddClient(string path, Client client)
         {
             try
@@ -495,6 +728,16 @@ namespace GestionClientWPF.ViewModels
             try
             {
                 Task<bool> task = Task.Run(async () => await ModifierClientAsync(path, client));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+        public void ModifierClientSolde(string path, int montant)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierClientSoldeAsync(path, montant));
                 task.Wait();
             }
             catch (Exception) { }
@@ -564,6 +807,17 @@ namespace GestionClientWPF.ViewModels
         }
 
 
+        /* Article */
+        public void ModifierArticle(string path, int PanierId)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierArticleAsync(path, PanierId));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
 
 
         /* Produit */
@@ -637,6 +891,101 @@ namespace GestionClientWPF.ViewModels
 
 
 
+
+        /* Compte */
+        public Compte GetSpecificCompte(string path)
+        {
+            Compte compte = new Compte();
+
+            try
+            {
+                Task<Compte> task = Task.Run(async () => await GetSpecificComptesAsync(path));
+                task.Wait();
+                compte = task.Result;
+            }
+            catch (Exception) { }
+
+            return compte;
+        }
+        public List<Compte> GetComptes(string path)
+        {
+            List<Compte> comptes = new List<Compte>();
+
+            try
+            {
+                Task<List<Compte>> task = Task.Run(async () => await GetComptesAsync(path));
+                task.Wait();
+                comptes = task.Result;
+            }
+            catch (Exception) { }
+
+            return comptes;
+        }
+        public void AddCompte(string path, Compte compte)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await AddCompteAsync(path, compte));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+        public void ModifierCompte(string path, Compte compte)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await ModifierCompteAsync(path, compte));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
+
+
+
+        /* Panier */
+        public Panier GetSpecificPanier(string path)
+        {
+            Panier panier = new Panier();
+
+            try
+            {
+                Task<Panier> task = Task.Run(async () => await GetSpecificPanierAsync(path));
+                task.Wait();
+                panier = task.Result;
+            }
+            catch (Exception) { }
+
+            return panier;
+        }
+
+
+        /* Facture */
+        public Facture GetSpecificFacture(string path)
+        {
+            Facture facture = new Facture();
+
+            try
+            {
+                Task<Facture> task = Task.Run(async () => await GetSpecificFactureAsync(path));
+                task.Wait();
+                facture = task.Result;
+            }
+            catch (Exception) { }
+
+            return facture;
+        }
+        public void GenererFacture(string path, int CompteId)
+        {
+            try
+            {
+                Task<bool> task = Task.Run(async () => await GenererFactureAsync(path, CompteId));
+                task.Wait();
+            }
+            catch (Exception) { }
+
+        }
 
 
 

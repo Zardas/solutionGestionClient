@@ -1,0 +1,63 @@
+﻿<Window x:Class="GestionClientWPF.Views.SoldeClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionClientWPF.Views"
+        mc:Ignorable="d"
+        Title="SoldeClient" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Header="Menu" Command="{Binding GoToInterfaceClient}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Center">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Mes factures" Command="{Binding GoToListeFactures}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Mes tickets" Command="{Binding GoToListeTicketsClient}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Mon solde" Command="{Binding GoToSolde}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Deconnexion" Command="{Binding GoToConnexion}"  Grid.Column="4" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <TextBlock Grid.Row="1" Text="{Binding Solde, StringFormat=Solde actuel : {0} cad, UpdateSourceTrigger=PropertyChanged}" Margin="250,0,10,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="18" />
+
+            <Grid Grid.Row="2" Margin="250,0,200,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Ajouter du solde :" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" />
+                <TextBox Grid.Column="1" Height="20" Padding="5,0,0,0" Width="106" Background="#FFE8E7E7" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Montant, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="2" Height="20" Content="Ajouter" Command="{Binding AjoutSoldeCommand}" Background="{x:Null}" Cursor="Hand" BorderBrush="#FF241F20" Margin="10,0,0,0" />
+            </Grid>
+
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#8fa571" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
+    </Grid>
+</Window>

@@ -1,0 +1,124 @@
+﻿<Window x:Class="GestionClientWPF.Views.InterfaceClient"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GestionClientWPF.Views"
+        mc:Ignorable="d"
+        Title="InterfaceClient" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Header="Menu" Command="{Binding GoToInterfaceClient}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Center">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Mes factures" Command="{Binding GoToListeFactures}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Mes tickets" Command="{Binding GoToListeTicketsClient}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Mon solde" Command="{Binding GoToSolde}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Center" />
+                <MenuItem Header="Deconnexion" Command="{Binding GoToConnexion}"  Grid.Column="4" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
+                    <MenuItem.Icon>
+                        <Image Source="Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <Grid Margin="0,21,0,0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="287*"/>
+                    <ColumnDefinition Width="313*"/>
+                    <ColumnDefinition Width="200*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#8fa571" FontWeight="Bold" Margin="38,0,0,0" Width="235">
+                Connecté sous
+                </TextBlock>
+                <TextBlock Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding NomCompte, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#8fa571" FontWeight="Bold" Height="42" />
+
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding TotalPanier, StringFormat=Total du panier : {0} cad, UpdateSourceTrigger=PropertyChanged}" Margin="10,0,10,0" />
+                <Button Grid.Column="2" Grid.Row="1" Command="{Binding GenererFacture}" Content="Générer une facture" Foreground="#FF241F20" BorderBrush="#FF241F20" Background="{x:Null}" Cursor="Hand" Margin="10,0,10,0" />
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="40,5,500,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Height="20" Padding="5,0,0,0" Width="170" Background="#FFE8E7E7" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding StringRecherchee, UpdateSourceTrigger=PropertyChanged}" />
+                <Button Grid.Column="1"  Height="20" Content="Rechercher" Command="{Binding RechercheCommand}" Background="{x:Null}" Cursor="Hand" BorderBrush="#FF241F20" Margin="10,0,0,0" />
+            </Grid>
+
+            <!-- Listes -->
+            <Grid Grid.Row="3" Margin="0,0,0,34" Grid.RowSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="6*" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- Titres -->
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Mon panier" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontFamily="Linux Biolinum G" Foreground="#FF231F20" FontWeight="Bold" Margin="40,0,0,0" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Text="Magasin" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="25" FontFamily="Linux Biolinum G" Foreground="#FF231F20" FontWeight="Bold" Margin="40,0,0,0" />
+
+                <!-- Panier -->
+                <ListBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="ListeClients" ItemsSource="{Binding ArticlesPanier, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedArticlePanier, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="35,0,30,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Nom}" />
+                                <TextBlock Text="{Binding Path=Prix, StringFormat=Prix : {0}cad}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <!-- Liste Commerciaux -->
+                <ListBox Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" x:Name="ListeGestionnaires" ItemsSource="{Binding ArticlesDisponibles, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedArticleDisponible, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="35,0,30,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Nom}" />
+                                <TextBlock Text="{Binding Path=Prix, StringFormat=Prix : {0}cad}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <!-- Boutons -->
+                <Button Grid.Row="2" Grid.Column="0" Command="{Binding OuvrirTicket}" Content="Ouvrir Ticket" Foreground="#FF241F20" BorderBrush="#FF241F20" Background="{x:Null}" Cursor="Hand" Margin="35,5,5,5" />
+                <Button Grid.Row="2" Grid.Column="1" Command="{Binding RetirerArticle}" Content="Supprimer" Foreground="#FFEA1F1F" BorderBrush="#FFEA1F1F" Background="{x:Null}" Cursor="Hand" Margin="35,5,30,5" />
+                <Button Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Command="{Binding AjouterArticle}" Content="Ajouter au panier" Foreground="#FF241F20" BorderBrush="#FF241F20" Background="{x:Null}" Cursor="Hand" Margin="35,5,30,5" />
+            </Grid>
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#8fa571" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
+    </Grid>
+</Window>

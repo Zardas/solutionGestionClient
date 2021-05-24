@@ -142,5 +142,33 @@ namespace GestionClientWPF.ViewModels
             window.Close();
         }
 
+        public void GoToInterfaceClient(Window window, int idCompte, string Token)
+        {
+            Views.InterfaceClient newWindow = new Views.InterfaceClient(idCompte, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToListeFactures(Window window, int idCompte, string Token)
+        {
+            Views.ListeFactures newWindow = new Views.ListeFactures(idCompte, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToListeTicketsClient(Window window, int idCompte, string Token)
+        {
+            Views.ListeTicketsClient newWindow = new Views.ListeTicketsClient(idCompte, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
+        public void GoToSoldeClient(Window window, int idCompte, string Token)
+        {
+            Views.SoldeClient newWindow = new Views.SoldeClient(idCompte, Token);
+            newWindow.Show();
+            window.Close();
+        }
+
     }
 }

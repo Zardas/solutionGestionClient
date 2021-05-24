@@ -13,11 +13,11 @@ using System.Windows.Shapes;
 namespace GestionClientWPF.Views
 {
     /// <summary>
-    /// Interaction logic for ListeComptesClient.xaml
+    /// Interaction logic for ListeFactures.xaml
     /// </summary>
-    public partial class ListeComptesClient : Window
+    public partial class ListeFactures : Window
     {
-        public ListeComptesClient(int idClient, string Token)
+        public ListeFactures(int IdCompte, string Token)
         {
             InitializeComponent();
         }
