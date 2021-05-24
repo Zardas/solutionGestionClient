@@ -77,7 +77,7 @@ namespace GestionClientWPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GestionClientWPF;V1.0.0.0;component/views/commercial/interfacecommercial.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GestionClientWPF;component/views/commercial/interfacecommercial.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Commercial\InterfaceCommercial.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

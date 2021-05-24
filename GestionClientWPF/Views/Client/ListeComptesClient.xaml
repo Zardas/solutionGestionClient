@@ -59,7 +59,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Content="Nouveau Compte :" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14" Height="26" Width="118" />
-                    <TextBox Grid.Column="1" Text="{Binding NomNouveauCompte, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#add398" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                    <TextBox Grid.Column="1" Text="{Binding NomNouveauCompte, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
 
                     <Button Grid.Column="2" Content="Ajouter" Command="{Binding AjouterCompteCommand}" Foreground="#8fa571" BorderBrush="#8fa571" Background="{x:Null}" Margin="15,0,15,0" FontSize="10" />
                 </Grid>

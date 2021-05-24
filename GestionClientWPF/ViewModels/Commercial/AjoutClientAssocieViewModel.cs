@@ -47,8 +47,8 @@ namespace GestionClientWPF.ViewModels
 
             this.Token = Token;
 
-            // Liste des abonnements
-            string path = "Client/GestionnaireNonAssocie/" + IdGestionnaire;
+            // Liste des clients dispo
+            string path = "Client/GestionnaireAssocie/0";
             Clients = new ObservableCollection<Client>(_restApiQueries.GetClients(path));
 
 
@@ -116,7 +116,7 @@ namespace GestionClientWPF.ViewModels
         {
             Clients.Clear();
 
-            string path = "Client/GestionnaireNonAssocie/" + IdGestionnaire;
+            string path = "Client/GestionnaireAssocie/0";
             foreach (Client client in _restApiQueries.GetClients(path))
             {
                 Clients.Add(client);

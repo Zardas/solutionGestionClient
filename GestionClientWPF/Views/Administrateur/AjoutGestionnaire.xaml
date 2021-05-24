@@ -47,7 +47,7 @@
 
             <!-- Titre -->
             <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold">
-                Ajout gestionnaire
+                Ajout commercial
             </TextBlock>
 
 

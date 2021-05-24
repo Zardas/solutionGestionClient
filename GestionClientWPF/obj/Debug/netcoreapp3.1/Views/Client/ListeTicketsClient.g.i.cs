@@ -61,7 +61,7 @@ namespace GestionClientWPF.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/GestionClientWPF;V1.0.0.0;component/views/client/listeticketsclient.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/GestionClientWPF;component/views/client/listeticketsclient.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Views\Client\ListeTicketsClient.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
