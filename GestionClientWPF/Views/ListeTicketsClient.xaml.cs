@@ -17,9 +17,10 @@ namespace GestionClientWPF.Views
     /// </summary>
     public partial class ListeTicketsClient : Window
     {
-        public ListeTicketsClient(int IdClient, string Token)
+        public ListeTicketsClient(int IdCompte, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.ListeTicketsClientViewModel(this, IdCompte, Token);
         }
     }
 }

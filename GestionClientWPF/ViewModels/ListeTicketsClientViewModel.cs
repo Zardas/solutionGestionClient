@@ -9,9 +9,8 @@ using GestionClientWPF.Models;
 
 namespace GestionClientWPF.ViewModels
 {
-    class OuvertureTicketSupportViewModel : INotifyPropertyChanged
+    class ListeTicketsClientViewModel : INotifyPropertyChanged
     {
-
         /* reference to the current window */
         private readonly Window _window;
 
@@ -28,22 +27,15 @@ namespace GestionClientWPF.ViewModels
         /* Token */
         private string Token;
 
-        /* Article concerné */
-        private int IdArticle;
+        string MessageResolution;
 
-        public string Objet { get; set; }
-        public string Description { get; set; }
+        public ObservableCollection<Support> Supports { get; set; }
+        public Support SelectedTicket { get; set; }
 
-        private bool isValid_addedSupport()
-        {
-            return (!string.IsNullOrEmpty(Objet) &&
-                    !string.IsNullOrEmpty(Description)
-                    );
-        }
 
 
         /* constructor and initialization */
-        public OuvertureTicketSupportViewModel(Window window, int IdCompte, string Token, int IdArticle)
+        public ListeTicketsClientViewModel(Window window, int IdCompte, string Token)
         {
             _window = window;
 
@@ -51,15 +43,14 @@ namespace GestionClientWPF.ViewModels
 
             _router = new Router();
 
-            this.IdCompte = IdCompte;
+            string path = "Support/Compte/" + IdCompte;
+            Supports = new ObservableCollection<Support>(_restApiQueries.GetSupports(path));
 
+
+            this.IdCompte = IdCompte;
             this.Token = Token;
 
-            this.IdArticle = IdArticle;
-
-            Description = "Expliquez de manière concise votre problème";
-
-            Debug.WriteLine("Demande d'ouverture d'un ticket pour l'article " + this.IdArticle);
+            MessageResolution = "Résolu par le client";
 
             /* Routing */
             GoToInterfaceClient = new RelayCommand(
@@ -87,11 +78,12 @@ namespace GestionClientWPF.ViewModels
                 o => _router.GoToConnexion(_window)
             );
 
-            /* Action */
-            OuvrirTicketCommand = new RelayCommand(
-                o => isValid_addedSupport(),
-                o => OuvrirTicket()
+            /* Actions */
+            FermerTicketCommand = new RelayCommand(
+                o => (SelectedTicket != null),
+                o => FermerTicket()
             );
+
 
         }
 
@@ -102,24 +94,30 @@ namespace GestionClientWPF.ViewModels
         public ICommand GoToSolde { get; private set; }
         public ICommand GoToConnexion { get; private set; }
 
-        /* Boutons */
-        public ICommand OuvrirTicketCommand { get; private set; }
+        /* Actions */
+        public ICommand FermerTicketCommand { get; private set; }
 
 
 
-        public void OuvrirTicket()
+        public void SynchroniserSupports()
         {
-            Support support = new Support()
+            Supports.Clear();
+
+            string path = "Support/Compte/" + IdCompte;
+            foreach (Support support in _restApiQueries.GetSupports(path))
             {
-                CompteId = IdCompte,
-                Objet = Objet,
-                Description = Description
-            }; // La date de création est générée coté API
+                Supports.Add(support);
+            }
+        }
 
-            string path = "Support/Ouvrir/" + IdArticle;
-            _restApiQueries.AddSupport(path, support);
-            _router.GoToListeTicketsClient(_window, IdCompte, Token);
 
+
+
+        public void FermerTicket()
+        {
+            string path = "Support/Resoudre/" + SelectedTicket.SupportId;
+            _restApiQueries.ModifierSupport(path, MessageResolution);
+            SynchroniserSupports();
         }
 
 
