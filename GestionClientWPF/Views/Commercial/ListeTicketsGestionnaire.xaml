@@ -5,8 +5,91 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestionClientWPF.Views"
         mc:Ignorable="d"
-        Title="ListeTicketsGestionnaire" Height="450" Width="800">
+        Title="ListeTicketsGestionnaire" Height="450" Width="1024" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="37*"/>
+                <RowDefinition Height="63*"/>
+                <RowDefinition Height="261*"/>
+                <RowDefinition Height="69*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <Grid DockPanel.Dock="Top" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="67*"/>
+                    <ColumnDefinition Width="102*"/>
+                    <ColumnDefinition Width="108*"/>
+                    <ColumnDefinition Width="107*"/>
+                    <ColumnDefinition Width="234*"/>
+                    <ColumnDefinition Width="351*"/>
+                    <ColumnDefinition Width="55*"/>
+                </Grid.ColumnDefinitions>
+                <MenuItem Command="{Binding GoToInterfaceCommercial}" Cursor="Hand" HorizontalAlignment="Center" Width="67">
+                    <MenuItem.Icon>
+                        <Image Source="../Ressources/img/home.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="+ Client" Command="{Binding GoToAssociationClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" Width="128"></MenuItem>
+                <MenuItem Header="+ Produit" Command="{Binding GoToAjoutProduit}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center" Width="134"></MenuItem>
+                <MenuItem Header="+ Service" Command="{Binding GoToAjoutService}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Center" Width="133"></MenuItem>
+                <MenuItem Header="+ Abonnement" Command="{Binding GoToAjoutAbonnement}"  Grid.Column="4" Cursor="Hand" HorizontalAlignment="Center" Width="234"></MenuItem>
+                <MenuItem Header="Liste des Tickets" Command="{Binding GoToListeTickets}"  Grid.Column="5" Cursor="Hand" HorizontalAlignment="Center" Width="350"></MenuItem>
+                <MenuItem Command="{Binding GoToConnexion}" Grid.Column="6" Cursor="Hand">
+                    <MenuItem.Icon>
+                        <Image Source="../Ressources/img/deconnexion.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </Grid>
+
+
+            <!-- Titre -->
+            <TextBlock Grid.Row="1" Text="Liste des tickets ouverts" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFE43030" FontWeight="Bold" Height="42" />
+
+
+
+            <!-- Tickets -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Liste des tickets -->
+                <ListBox Grid.Column="0" x:Name="_Tickets" ItemsSource="{Binding Supports, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding Path=SelectedTicket, UpdateSourceTrigger=PropertyChanged}" Background="#FFE0E3DB" BorderBrush="#FFC8C8C8" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.HorizontalScrollBarVisibility="Auto" Margin="20,0,20,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Objet, StringFormat=Objet : {0}}" />
+                                <TextBlock Text="{Binding Path=DateCreation, StringFormat=En date du {0}}" />
+                                <TextBlock Text="{Binding Path=Status, StringFormat=Statut : {0}}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+
+                </ListBox>
+
+
+                <StackPanel Grid.Column="1" Margin="20,0,20,0">
+                    <!-- Description du ticket -->
+                    <TextBlock Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Auto" Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="left" FontSize="12" FontFamily="Linux Biolinum G" Foreground="#FF241F20" Height="101" TextWrapping="Wrap" />
+                    <!-- Message de résolution -->
+                    <TextBlock Text="Message de résolution" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="16" Margin="0,0,0,5" />
+                    <TextBox Height="79" Padding="5,0,0,0" Background="#FFE8E7E7" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" HorizontalAlignment="Left" Text="{Binding MessageResolution, UpdateSourceTrigger=PropertyChanged}" Margin="0,0,0,15" Width="472" />
+                    <!-- Bouton -->
+                    <Button Command="{Binding FermerTicketCommand}" Content="Fermer ce ticket" Foreground="#FF241F20" BorderBrush="#FF241F20" Background="{x:Null}" Cursor="Hand" />
+                </StackPanel>
+
+            </Grid>
+
+            <Button Grid.Row="3" Command="{Binding AfficherDescriptionCommand}" Content="Afficher la description" Foreground="#FF241F20" BorderBrush="#FF241F20" Background="{x:Null}" Cursor="Hand" Margin="20,10,532,30" />
+
+
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FFE43030" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="1024"  Grid.Row="1" />
     </Grid>
 </Window>

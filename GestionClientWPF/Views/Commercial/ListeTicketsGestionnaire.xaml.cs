@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public ListeTicketsGestionnaire(int idCommercial, string Token)
         {
             InitializeComponent();
+            DataContext = new ViewModels.ListeTicketsGestionnaireViewModel(this, idCommercial, Token);
         }
     }
 }

@@ -9,7 +9,7 @@ using GestionClientWPF.Models;
 
 namespace GestionClientWPF.ViewModels
 {
-    class ListeTicketsClientViewModel : INotifyPropertyChanged
+    class ListeTicketsGestionnaireViewModel : INotifyPropertyChanged
     {
         /* reference to the current window */
         private readonly Window _window;
@@ -21,8 +21,8 @@ namespace GestionClientWPF.ViewModels
         private readonly Router _router;
 
 
-        /* Compte */
-        private int IdCompte;
+        /* Commercial */
+        private int IdGestionnaire;
 
         /* Token */
         private string Token;
@@ -38,7 +38,7 @@ namespace GestionClientWPF.ViewModels
 
 
         /* constructor and initialization */
-        public ListeTicketsClientViewModel(Window window, int IdCompte, string Token)
+        public ListeTicketsGestionnaireViewModel(Window window, int IdGestionnaire, string Token)
         {
             _window = window;
 
@@ -46,34 +46,43 @@ namespace GestionClientWPF.ViewModels
 
             _router = new Router();
 
-            string path = "Support/Compte/" + IdCompte;
+            string path = "Support/Commercial/Ouvert/" + IdGestionnaire;
             Supports = new ObservableCollection<Support>(_restApiQueries.GetSupports(path));
 
 
-            this.IdCompte = IdCompte;
+            this.IdGestionnaire = IdGestionnaire;
             this.Token = Token;
 
-            MessageResolution = "Résolu par le client";
 
-            /* Routing */
-            GoToInterfaceClient = new RelayCommand(
+            /* Commandes de routing */
+            GoToInterfaceCommercial = new RelayCommand(
                 o => true,
-                o => _router.GoToInterfaceClient(_window, IdCompte, Token)
+                o => _router.GoToInterfaceCommercial(_window, IdGestionnaire, Token)
             );
 
-            GoToListeFactures = new RelayCommand(
+            GoToAssociationClient = new RelayCommand(
                 o => true,
-                o => _router.GoToListeFactures(_window, IdCompte, Token)
+                o => _router.GoToAssociationClient(_window, IdGestionnaire, Token)
             );
 
-            GoToListeTicketsClient = new RelayCommand(
+            GoToAjoutProduit = new RelayCommand(
                 o => true,
-                o => _router.GoToListeTicketsClient(_window, IdCompte, Token)
+                o => _router.GoToAjoutProduit(_window, IdGestionnaire, Token)
             );
 
-            GoToSolde = new RelayCommand(
+            GoToAjoutService = new RelayCommand(
                 o => true,
-                o => _router.GoToSoldeClient(_window, IdCompte, Token)
+                o => _router.GoToAjoutService(_window, IdGestionnaire, Token)
+            );
+
+            GoToAjoutAbonnement = new RelayCommand(
+                o => true,
+                o => _router.GoToAjoutAbonnement(_window, IdGestionnaire, Token)
+            );
+
+            GoToListeTickets = new RelayCommand(
+                o => true,
+                o => _router.GoToListeTicketsGestionnaire(_window, IdGestionnaire, Token)
             );
 
             GoToConnexion = new RelayCommand(
@@ -83,7 +92,7 @@ namespace GestionClientWPF.ViewModels
 
             /* Actions */
             FermerTicketCommand = new RelayCommand(
-                o => (SelectedTicket != null && SelectedTicket.Status != "Resolu"),
+                o => (SelectedTicket != null),
                 o => FermerTicket()
             );
 
@@ -96,10 +105,12 @@ namespace GestionClientWPF.ViewModels
         }
 
         /* Menu */
-        public ICommand GoToInterfaceClient { get; private set; }
-        public ICommand GoToListeFactures { get; private set; }
-        public ICommand GoToListeTicketsClient { get; private set; }
-        public ICommand GoToSolde { get; private set; }
+        public ICommand GoToInterfaceCommercial { get; private set; }
+        public ICommand GoToAssociationClient { get; private set; }
+        public ICommand GoToAjoutProduit { get; private set; }
+        public ICommand GoToAjoutService { get; private set; }
+        public ICommand GoToAjoutAbonnement { get; private set; }
+        public ICommand GoToListeTickets { get; private set; }
         public ICommand GoToConnexion { get; private set; }
 
         /* Actions */
@@ -112,7 +123,7 @@ namespace GestionClientWPF.ViewModels
         {
             Supports.Clear();
 
-            string path = "Support/Compte/" + IdCompte;
+            string path = "Support/Commercial/Ouvert/" + IdGestionnaire;
             foreach (Support support in _restApiQueries.GetSupports(path))
             {
                 Supports.Add(support);

@@ -21,7 +21,7 @@ namespace GestionClientWPF.ViewModels
         private readonly Router _router;
 
 
-        /* Administrateur */
+        /* Commercial */
         private int IdGestionnaire;
 
         /* Token */
