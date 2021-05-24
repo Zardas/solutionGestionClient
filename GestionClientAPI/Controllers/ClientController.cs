@@ -39,6 +39,20 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
         }
 
+        // Get a specific Client
+        [HttpGet("{ClientId}")]
+        public IActionResult GetClientpecifique(int ClientId)
+        {
+            try
+            {
+                Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(ClientId)).FirstOrDefault();
+
+                return Ok(client);
+            }
+            catch (Exception) { }
+
+            return BadRequest(); // Error code 400
+        }
 
         /* Clients associés à un gestionnaire */
         [HttpGet("GestionnaireAssocie/{GestionnaireId}")]
@@ -62,6 +76,22 @@ namespace GestionClientAPI.Controllers
                 List<Client> clients = _context.Clients.Where(c => (!c.GestionnaireAssocieId.Equals(0))).ToList();
 
                 return Ok(clients);
+            }
+            catch (Exception) { }
+
+            return BadRequest();
+        }
+
+        /* Renvoie le solde du client */
+        [HttpGet("Solde/{CompteId}")]
+        public IActionResult GetSolde(int CompteId)
+        {
+            try
+            {
+                Compte compte = _context.Comptes.Where(c => c.CompteId.Equals(CompteId)).FirstOrDefault();
+                Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(compte.ClientId)).FirstOrDefault();
+
+                return Ok(client.Solde);
             }
             catch (Exception) { }
 
@@ -151,6 +181,28 @@ namespace GestionClientAPI.Controllers
 
             return BadRequest();
         }
+
+        /* Clients non associés à un gestionnaire */
+        [HttpPut("Solde/{CompteId}")]
+        public IActionResult ModifierSolde(int CompteId, [FromBody] int montant)
+        {
+            try
+            {
+                Compte compte = _context.Comptes.Where(c => c.CompteId.Equals(CompteId)).FirstOrDefault();
+                Client client = _context.Clients.Where(c => c.UtilisateurId.Equals(compte.ClientId)).FirstOrDefault();
+
+                client.Solde += montant;
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception) { }
+
+            return BadRequest();
+        }
+
+
+
 
 
         [HttpDelete("{ClientId}")]
