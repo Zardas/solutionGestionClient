@@ -20,6 +20,7 @@ namespace GestionClientWPF.Views
         public Inscription()
         {
             InitializeComponent();
+            DataContext = new ViewModels.InscriptionViewModel(this);
         }
     }
 }

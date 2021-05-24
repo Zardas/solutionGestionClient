@@ -9,16 +9,23 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="83*"/>
-                <RowDefinition Height="173*"/>
-                <RowDefinition Height="143*"/>
+                <RowDefinition Height="17*" />
+                <RowDefinition Height="28*"/>
+                <RowDefinition Height="93*"/>
+                <RowDefinition Height="77*"/>
             </Grid.RowDefinitions>
 
+            <MenuItem Header="Menu" Command="{Binding GoToConnexion}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <MenuItem.Icon>
+                    <Image Source="Ressources/img/home.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+
             <!-- Titre -->
-            <TextBlock HorizontalAlignment="Center" Text="Gestion Client" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Height="42" Width="234"/>
+            <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Gestion Client" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FF241F20" FontWeight="Bold" Height="42" Width="234"/>
 
             <!-- Formulaire connexion -->
-            <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="368" Height="140">
+            <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Width="368" Height="176">
 
                 <!-- Nom Utilisateur -->
                 <Grid Height="56" Margin="25,0">
@@ -28,7 +35,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Login :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
-                    <TextBox Text="{Binding LoginConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding LoginConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
                 </Grid>
 
                 <!-- Mot de passe -->
@@ -39,29 +46,22 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Content="Mot de passe :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
-                    <TextBox Text="{Binding MotDePasseConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FFEA601F" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                    <TextBox Text="{Binding MotDePasseConnexion, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Height="20" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
                 </Grid>
 
-                <Button Content="Connexion" Command="{Binding ConnexionClientCommand}" Margin="100,0,100,0" Foreground="#FFEA601F" BorderBrush="#FFEA601F" Height="28" Background="{x:Null}" />
+                <Button Content="Connexion" Command="{Binding ConnexionClientCommand}" Margin="100,0,100,0" Foreground="#FF241F20" BorderBrush="#FF241F20" Height="28" Background="{x:Null}" />
 
-
+                <TextBlock Text="{Binding MessageErreur, UpdateSourceTrigger=PropertyChanged}" Margin="0,10,0,0" HorizontalAlignment="Center" Foreground="#FFF11C1C" FontWeight="Bold"></TextBlock>
             </StackPanel>
 
             <!-- Pas encore inscrit -->
-            <Button Grid.Row="2" HorizontalAlignment="Center" Content="Pas encore inscrit ? Inscription." VerticalAlignment="Top" Width="250" FontSize="16" FontFamily="Linux Biolinum G" Foreground="#FFEA601F" FontWeight="Bold" Cursor="Hand" Command="{Binding GoToClientInscription}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,15,0,0" Height="22" />
+            <Button Grid.Row="3" HorizontalAlignment="Center" Content="Pas encore inscrit ? Inscription." VerticalAlignment="Top" Width="250" FontSize="16" FontFamily="Linux Biolinum G" Foreground="#FF241F20" FontWeight="Bold" Cursor="Hand" Command="{Binding GoToClientInscription}" BorderBrush="{x:Null}" Background="{x:Null}" Margin="0,15,0,0" Height="22" />
 
 
         </Grid>
 
-        <!--<TextBlock Text="{Binding LoginUtilisateur, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="36" FontFamily="Linux Biolinum G" TextAlignment="Left" Foreground="#FFEA601F" FontWeight="Bold" Height="61" Width="481" Margin="31,39,0,0" />
-        <DataGrid Background="#FF937E7E"  ItemsSource="{Binding Clients, NotifyOnSourceUpdated=True}" BorderBrush="#FF1267B9" Margin="0,133,0,10">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Login}" />
-                <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Nom}" />
-            </DataGrid.Columns>
-        </DataGrid>-->
 
         <!-- Footer -->
-        <Rectangle Fill="#FFEA601F" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
+        <Rectangle Fill="#FF241F20" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

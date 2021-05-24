@@ -37,10 +37,10 @@
     <Compile Update="Views\Commercial\InterfaceCommercial.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\InterfaceClient.xaml.cs">
+    <Compile Update="Views\Client\InterfaceClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ListeComptesClient.xaml.cs">
+    <Compile Update="Views\Client\ListeComptesClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Administrateur\ModificationClient.xaml.cs">
@@ -58,16 +58,16 @@
     <Compile Update="Views\Commercial\ModificationService.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ListeFactures.xaml.cs">
+    <Compile Update="Views\Client\ListeFactures.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ListeTicketsClient.xaml.cs">
+    <Compile Update="Views\Client\ListeTicketsClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\OuvertureTicketSupport.xaml.cs">
+    <Compile Update="Views\Client\OuvertureTicketSupport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\SoldeClient.xaml.cs">
+    <Compile Update="Views\Client\SoldeClient.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -102,10 +102,10 @@
     <Page Update="Views\Commercial\InterfaceCommercial.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\InterfaceClient.xaml">
+    <Page Update="Views\Client\InterfaceClient.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ListeComptesClient.xaml">
+    <Page Update="Views\Client\ListeComptesClient.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Administrateur\ModificationClient.xaml">
@@ -123,16 +123,16 @@
     <Page Update="Views\Commercial\ModificationService.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ListeFactures.xaml">
+    <Page Update="Views\Client\ListeFactures.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\ListeTicketsClient.xaml">
+    <Page Update="Views\Client\ListeTicketsClient.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\OuvertureTicketSupport.xaml">
+    <Page Update="Views\Client\OuvertureTicketSupport.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\SoldeClient.xaml">
+    <Page Update="Views\Client\SoldeClient.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

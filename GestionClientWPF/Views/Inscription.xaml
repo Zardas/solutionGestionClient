@@ -7,6 +7,101 @@
         mc:Ignorable="d"
         Title="Inscription" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40*"/>
+                <RowDefinition Height="69*"/>
+                <RowDefinition Height="321*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Menu de navigation -->
+            <MenuItem Grid.Row="0" Header="Menu" Command="{Binding GoToConnexion}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Left" Margin="10,0,0,0">
+                <MenuItem.Icon>
+                    <Image Source="Ressources/img/home.png" />
+                </MenuItem.Icon>
+            </MenuItem>
+
+
+
+            <!-- Titre -->
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="36" FontFamily="Linux Biolinum G" Foreground="#FF241F20" FontWeight="Bold">
+                Inscription
+            </TextBlock>
+
+
+
+            <!-- Formulaire -->
+            <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="392" >
+
+                <!-- Login -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Login :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding LoginInscription, UpdateSourceTrigger=PropertyChanged}" />
+                    <Label Grid.Column="2" Content="Mail :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="3" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" Text="{Binding MailInscription, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+
+                <!-- Nom et prénom -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Nom -->
+                    <Label Grid.Column="0" Content="Nom :" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="1" Height="20" TextWrapping="Wrap" Text="{Binding NomInscription, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                    <!-- Prénom -->
+                    <Label Grid.Column="2" Content="Prénom :" HorizontalAlignment="Right" Margin="10,0,5,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="3" Height="20" TextWrapping="Wrap" Text="{Binding PrenomInscription, UpdateSourceTrigger=PropertyChanged}" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                </Grid>
+
+
+                <!-- Mail -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Content="Mot de passe :" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="1" Text="{Binding MotDePasseInscription, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                </Grid>
+
+                <!-- Téléphone et âge -->
+                <Grid Height="56" Margin="25,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Téléphone -->
+                    <Label Grid.Column="0" Content="Téléphone :" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="1" Text="{Binding TelephoneInscription, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+
+                    <!-- Age -->
+                    <Label Grid.Column="2" Content="Age :" HorizontalAlignment="Right" Margin="0,0,5,0" VerticalAlignment="Center" FontFamily="Linux Biolinum G" FontSize="14"/>
+                    <TextBox Grid.Column="3" Text="{Binding AgeInscription, UpdateSourceTrigger=PropertyChanged}" Height="20" TextWrapping="Wrap" Padding="5,0,0,0" Margin="0,0,0,0" Background="#FFE8E7E7" Foreground="#FF241F20" FontFamily="Linux Biolinum G" FontStyle="Italic" FontSize="14" VerticalAlignment="Center" />
+                </Grid>
+
+                <Button Content="Ajouter" Command="{Binding AjouterClient}" Margin="100,5,100,0" Foreground="#FF241F20" BorderBrush="#FF241F20" Height="28" Background="{x:Null}" />
+
+            </StackPanel>
+
+
+        </Grid>
+        <!-- Footer -->
+        <Rectangle Fill="#FF241F20" HorizontalAlignment="Center" Height="12" VerticalAlignment="Bottom" Width="800"  Grid.Row="1" />
     </Grid>
 </Window>

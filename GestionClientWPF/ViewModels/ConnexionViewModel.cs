@@ -22,6 +22,9 @@ namespace GestionClientWPF.ViewModels
         /* Router */
         private Router _router;
 
+        /* Message d'erreur */
+        public string MessageErreur {get; set;}
+
         /* Champs pour la connexion */
         public string LoginConnexion { get; set; }
         public string MotDePasseConnexion { get; set; }
@@ -57,21 +60,28 @@ namespace GestionClientWPF.ViewModels
 
             _clients = new ObservableCollection<Client>(_restApiQueries.GetClients("Client"));
 
-            
+            /* Routing */
+            GoToConnexion = new RelayCommand(
+                o => true,
+                o => _router.GoToConnexion(_window)
+            );
+            GoToClientInscription = new RelayCommand(
+                o => true,
+                o => _router.GoToInscription(_window)
+            );
 
+            /* Action */
             ConnexionClientCommand = new RelayCommand(
                 o => is_identififantsValides(),
                 o => Connexion()
             );
 
-            GoToClientInscription = new RelayCommand(
-                o => true,
-                o => _router.GoToInscription(_window)
-            );
+            
         }
 
-        public ICommand ConnexionClientCommand { get; private set; }
         public ICommand GoToClientInscription { get; private set; }
+        public ICommand GoToConnexion { get; private set; }
+        public ICommand ConnexionClientCommand { get; private set; }
 
 
         private void Connexion()
@@ -106,17 +116,22 @@ namespace GestionClientWPF.ViewModels
                         break;
 
                     default:
-                        _router.GoToConnexion(_window);
+                        ErreurConnexion();
                         break;
                 }
 
             } else
             {
-                _router.GoToConnexion(_window);
+                ErreurConnexion();
             }
 
         }
 
+        public void ErreurConnexion()
+        {
+            MessageErreur = "Identifiants invalides";
+            OnPropertyChanged("MessageErreur");
+        }
 
         /* definition of PropertyChanged */
         public event PropertyChangedEventHandler PropertyChanged;

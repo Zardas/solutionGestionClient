@@ -28,7 +28,7 @@
                 </Grid.ColumnDefinitions>
                 <MenuItem Command="{Binding GoToInterfaceCommercial}" Cursor="Hand" HorizontalAlignment="Center" Width="67">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/home.png" />
+                        <Image Source="../Ressources/img/home.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="+ Client" Command="{Binding GoToAssociationClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center" Width="128"></MenuItem>
@@ -38,7 +38,7 @@
                 <MenuItem Header="Liste des Tickets" Command="{Binding GoToListeTickets}"  Grid.Column="5" Cursor="Hand" HorizontalAlignment="Center" Width="350"></MenuItem>
                 <MenuItem Command="{Binding GoToConnexion}" Grid.Column="6" Cursor="Hand">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/deconnexion.png" />
+                        <Image Source="../Ressources/img/deconnexion.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </Grid>
@@ -53,7 +53,7 @@
 
 
             <!-- Formulaire -->
-            <ScrollViewer Grid.Row="1" Margin="0,40,0,0" Grid.RowSpan="2">
+            <ScrollViewer Grid.Row="1" Margin="5,40,0,0" Grid.RowSpan="2">
                 <StackPanel Margin="0,2,0,0" ScrollViewer.VerticalScrollBarVisibility="Visible" CanVerticallyScroll="True" >
 
                     <!-- Ligne 1 -->

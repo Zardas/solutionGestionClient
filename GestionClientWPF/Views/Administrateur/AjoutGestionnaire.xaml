@@ -24,22 +24,22 @@
                 </Grid.ColumnDefinitions>
                 <MenuItem Header="Menu" Command="{Binding GoToInterfaceAdministrateur}"  Grid.Column="0" Cursor="Hand" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/home.png" />
+                        <Image Source="../Ressources/img/home.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Ajouter client" Command="{Binding GoToAjoutClient}"  Grid.Column="1" Cursor="Hand" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/plus2.png" />
+                        <Image Source="../Ressources/img/plus2.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Ajouter commercial" Command="{Binding GoToAjoutGestionnaire}"  Grid.Column="2" Cursor="Hand" HorizontalAlignment="Center">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/plus2.png" />
+                        <Image Source="../Ressources/img/plus2.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <MenuItem Header="Deconnexion" Command="{Binding GoToConnexion}"  Grid.Column="3" Cursor="Hand" HorizontalAlignment="Right" HorizontalContentAlignment="Right">
                     <MenuItem.Icon>
-                        <Image Source="Ressources/img/deconnexion.png" />
+                        <Image Source="../Ressources/img/deconnexion.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </Grid>

@@ -1,4 +1,21 @@
 ﻿
 
-FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\ListeTicketsClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Administrateur\AjoutClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Administrateur\AjoutGestionnaire.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Administrateur\InterfaceAdministrateur.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Administrateur\ModificationClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Administrateur\ModificationGestionnaire.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\InterfaceClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\ListeComptesClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\ListeFactures.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\ListeTicketsClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\OuvertureTicketSupport.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Client\SoldeClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\AjoutAbonnement.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\AjoutProduit.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\AjoutService.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\AssociationClient.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\InterfaceCommercial.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\ModificationProduit.xaml;;
+FC:\Users\Antoine\Desktop\Scolaire\Master2Uqar\Programmation objet avancée\gestionRelationClient\GestionClientWPF\Views\Commercial\ModificationService.xaml;;
 

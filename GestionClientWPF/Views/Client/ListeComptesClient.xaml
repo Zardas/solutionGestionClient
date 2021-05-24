@@ -17,7 +17,7 @@
             <!-- Menu de navigation -->
             <MenuItem Command="{Binding GoToConnexion}" Cursor="Hand" HorizontalAlignment="Right">
                 <MenuItem.Icon>
-                    <Image Source="Ressources/img/deconnexion.png" />
+                    <Image Source="../Ressources/img/deconnexion.png" />
                 </MenuItem.Icon>
             </MenuItem>
 
