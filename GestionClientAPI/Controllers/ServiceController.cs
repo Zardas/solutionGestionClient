@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+    [Authorize]
     [Route("api/Service")]
     [ApiController]
     public class ServiceController : ControllerBase

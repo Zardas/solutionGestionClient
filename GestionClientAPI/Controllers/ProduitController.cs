@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+    [Authorize]
     [Route("api/Produit")]
     [ApiController]
     public class ProduitController : ControllerBase

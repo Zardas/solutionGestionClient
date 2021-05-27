@@ -7,6 +7,8 @@ using GestionClientAPI.Models.Shared;
 using GestionClientAPI.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
+using GestionClientAPI.Controllers.Auth;
+using Microsoft.Extensions.Configuration;
 
 namespace GestionClientAPI.Controllers
 {
@@ -16,12 +18,12 @@ namespace GestionClientAPI.Controllers
     public class UtilisateurController : Controller
     {
         private Models.Shared.gestionAPI_DBContext _context;
-        private readonly IJwtAuthentificationManager _jwtAuthentificationManager;
+        private IConfiguration _config;
 
-        public UtilisateurController(gestionAPI_DBContext context, IJwtAuthentificationManager jwtAuthentificationManager)
+        public UtilisateurController(gestionAPI_DBContext context, IConfiguration config)
         {
             _context = context;
-            _jwtAuthentificationManager = jwtAuthentificationManager;
+            _config = config;
         }
 
         [HttpGet]
@@ -38,6 +40,8 @@ namespace GestionClientAPI.Controllers
             return BadRequest(); // Error code 400
 
         }
+
+
 
 
         // Pour la connexion
@@ -78,8 +82,8 @@ namespace GestionClientAPI.Controllers
                         break;
                 }
 
-
-                string token = _jwtAuthentificationManager.Authentify(utilisateurATrouver.UtilisateurId);
+                var jwt = new JwtService(_config);
+                var token = jwt.GenerateSecurityToken(utilisateurATrouver.Login);
                 ResultConnexion resultConnexion = new ResultConnexion() { Token = token, Type = type, Id = utilisateurATrouver.UtilisateurId };
                 
                 return Ok(resultConnexion);

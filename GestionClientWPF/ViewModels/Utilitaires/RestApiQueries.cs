@@ -25,8 +25,9 @@ namespace GestionClientWPF.ViewModels
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             // Setting Authorization.
             Token = token;
-            Debug.WriteLine("Token mis dasn l'header : " + Token);
+            Debug.WriteLine("Token mis dans l'header : " + Token);;
             _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Token);
+            Debug.WriteLine("FLAAA D : " + _client.DefaultRequestHeaders.Authorization);
 
             Token = token;
         }

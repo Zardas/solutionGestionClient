@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+    [Authorize]
     [Route("api/Article")]
     [ApiController]
     public class ArticleController : ControllerBase

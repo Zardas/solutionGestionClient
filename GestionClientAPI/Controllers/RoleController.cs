@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+    [Authorize]
     [Route("api/Role")]
     [ApiController]
     public class RoleController : ControllerBase

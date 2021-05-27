@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
-
+    [Authorize]
     [Route("api/Client")]
     [ApiController]
     public class ClientController : ControllerBase
@@ -99,6 +99,8 @@ namespace GestionClientAPI.Controllers
         }
 
 
+        // Pas besoin d'être connecté pour ça
+        [AllowAnonymous]
         [HttpPost]
         public IActionResult AddClient([FromBody] ClientModel model) // Passer en [FromBody] si ça ne marche pas
         {

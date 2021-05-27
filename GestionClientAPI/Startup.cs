@@ -1,12 +1,11 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
-using System.Text;
+using GestionClientAPI.Controllers.Auth;
+using Microsoft.Extensions.Hosting;
+
 
 namespace GestionClientAPI
 {
@@ -29,46 +28,8 @@ namespace GestionClientAPI
 
             services.AddSwaggerGen();
 
-            var key = "Neptunus Favet Eunti";
-
-            // Definie comment le mot clé [Authorize] est défini
-
-            services.AddAuthentication("Bearer")
-                .AddJwtBearer("Bearer", options =>
-                {
-                    options.Authority = "http://localhost:5000";
-                    options.RequireHttpsMetadata = false;
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-
-            services.AddSingleton<GestionClientAPI.Controllers.IJwtAuthentificationManager>(new GestionClientAPI.Controllers.JwtAuthentificationManager(key));
-
-
-            /*services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-               {
-                   options.Authority = "https://localhost:5000";
-                   options.RequireHttpsMetadata = false;
-                   options.SaveToken = true;
-                   options.TokenValidationParameters = new TokenValidationParameters
-                   {
-                       ValidateIssuerSigningKey = true,
-                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                       ValidateIssuer = false,
-                       ValidateAudience = false
-                   };
-               });*/
-
-
+            services.AddControllers();
+            services.AddTokenAuthentication(Configuration);
 
 
 
@@ -79,17 +40,26 @@ namespace GestionClientAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
             app.UseAuthentication();
+            app.UseAuthorization();
+
+
+
+            app.UseMvc();
 
             app.UseSwagger();
             app.UseSwaggerUI(config =>
             {
                 config.SwaggerEndpoint("/swagger/v1/swagger.json", "Task Manager Rest API V1.0");
             });
-
-            app.UseAuthorization();
         }
     }
 }

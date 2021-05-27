@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using GestionClientAPI.Models.Shared;
 using GestionClientAPI.Models;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
+    [Authorize]
     [Route("api/Support")]
     [ApiController]
     public class SupportController : ControllerBase

@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestionRelationClient", "gestionRelationClient\gestionRelationClient.csproj", "{32EF349C-F6D3-4ADB-8A74-4794B9E22427}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gestionRelationClient(NEPASUTILISER)", "gestionRelationClient\gestionRelationClient(NEPASUTILISER).csproj", "{32EF349C-F6D3-4ADB-8A74-4794B9E22427}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionClientAPI", "GestionClientAPI\GestionClientAPI.csproj", "{A5E00C7C-350A-47EA-9F91-FB28EE7023DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionClientWPF", "GestionClientWPF\GestionClientWPF.csproj", "{52CA9605-9CA5-422B-944C-4959BA5B8879}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GestionClientWPF", "GestionClientWPF\GestionClientWPF.csproj", "{52CA9605-9CA5-422B-944C-4959BA5B8879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

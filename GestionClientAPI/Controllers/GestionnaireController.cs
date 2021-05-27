@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GestionClientAPI.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/Gestionnaire")]
     [ApiController]
     public class GestionnaireController : ControllerBase
